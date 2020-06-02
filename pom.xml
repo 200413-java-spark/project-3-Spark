@@ -17,62 +17,20 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13</version>
-      <scope>test</scope>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.11</artifactId>
+      <version>2.3.2</version>
     </dependency>
-
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-core_2.12</artifactId>
-      <version>2.4.5</version>
+      <artifactId>spark-sql_2.11</artifactId>
+      <version>2.3.2</version>
     </dependency>
-
     <dependency>
-      <groupId>org.apache.spark</groupId>
-      <artifactId>spark-sql_2.12</artifactId>
-      <version>2.4.5</version>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-hdfs</artifactId>
+      <version>2.2.0</version>
     </dependency>
-
 </dependencies>  
-
-<build>
-
-    <plugins>
-
-      <plugin>            
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.1.2</version>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>            
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.2.0</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <classpathPrefix>dependency/</classpathPrefix>
-                <mainClass>com.github.p3spark.SparkJob</mainClass>
-              </manifest>
-            </archive>       
-          </configuration>
-      </plugin>
-
-    </plugins>
-    
-  </build>
 
 </project>

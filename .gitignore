@@ -10,3 +10,5 @@ target/
 #packages
 *.jar
 *.war
+bin/
+pom.xml
