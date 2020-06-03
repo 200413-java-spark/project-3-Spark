@@ -44,6 +44,8 @@ public class CountyOil {
             List<Row> counties = new ArrayList<>();
             counties = data.select(headers[cate]).distinct().takeAsList(CCount);
 
+        List<Dataset<Row>> addList = new ArrayList<>();
+
         for (int i = 0; i < CCount; i++){
             //iterates through each county and shows a table of how much oil
             //was produced each year
@@ -58,9 +60,10 @@ public class CountyOil {
             oilYear.createOrReplaceTempView("ysTable");
             Dataset<Row> oilYearSorted = session.sql("SELECT * FROM ysTable ORDER BY "+headers[indv]);
             //shows the table
-            oilYearSorted.show();
-            System.out.println(counties.get(i).get(0).toString().replace("'", "\'\'"));
-            TimeUnit.SECONDS.sleep(5);//pauses for 5 seconds
+            //oilYearSorted.show();
+            //System.out.println(counties.get(i).get(0).toString().replace("'", "\'\'"));
+            //TimeUnit.SECONDS.sleep(5);//pauses for 5 seconds
+            addList.add(oilYearSorted);
         }
 
             
