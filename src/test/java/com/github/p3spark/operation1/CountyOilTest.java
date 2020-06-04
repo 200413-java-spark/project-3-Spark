@@ -1,22 +1,23 @@
 package com.github.p3spark.operation1;
 
-import org.junit.jupiter.api.AfterEach;
+import com.github.p3spark.startup.CreateSparkSession;
+import org.apache.spark.sql.SparkSession;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CountyOilTest {
+    SparkSession session;
+    CountyOil countyOil;
 
     @BeforeEach
     void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
+        CreateSparkSession startSession = CreateSparkSession.getInstance();
+        session = startSession.getSession();
+        countyOil = new CountyOil();
     }
 
     @Test
-    void findTotOilByCounty() {
+    void findTotOilByCounty() throws InterruptedException {
+        countyOil.findTotOilByCounty(session);
     }
 }

@@ -1,26 +1,30 @@
 package com.github.p3spark.operation1;
 
-import org.junit.jupiter.api.AfterEach;
+import com.github.p3spark.startup.CreateSparkSession;
+import org.apache.spark.sql.SparkSession;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SimpleTransformTest {
+    SimpleTransform simpleTransform;
 
     @BeforeEach
     void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
+        CreateSparkSession startSession = CreateSparkSession.getInstance();
+        SparkSession session = startSession.getSession();
+        simpleTransform = new SimpleTransform(session);
     }
 
     @Test
+    @DisplayName("Testing filterCompanyName method")
     void filterCompanyName() {
+        SimpleTransform.filterCompanyName("Klein Oil & Logging");
     }
 
     @Test
+    @DisplayName("Testing allCompanyName method")
     void allCompanyName() {
+        SimpleTransform.allCompanyName();
     }
 }
