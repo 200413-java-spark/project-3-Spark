@@ -1,9 +1,11 @@
+package com.github.p3spark;
 
 
 import java.io.Serializable;
 
 /**
  * This might be useful some time down the line. Maybe.
+ * All of the fields are here, but the data type may not be correct
  */
 public class Schema implements Serializable {
 

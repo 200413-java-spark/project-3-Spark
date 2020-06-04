@@ -1,3 +1,5 @@
+package com.github.p3spark;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,6 +13,7 @@ import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka010.ConsumerStrategies;
 import org.apache.spark.streaming.kafka010.KafkaUtils;
+
 import org.apache.spark.streaming.kafka010.LocationStrategies;
 /**
  * This is what I wrote down of Mehrab's Hello World in Kafka.

@@ -1,3 +1,5 @@
+package com.github.p3spark;
+
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
@@ -13,28 +15,36 @@ import org.apache.spark.sql.types.StructType;
  */
 public class GarrisonSpark {
 
+    
     public static void main(String[] args) throws StreamingQueryException
     {
-        System.out.println("********************************************************************************");
         SparkSession session = SparkSession.builder().appName("spark-job").master("local[*]").getOrCreate();
 
-        StructType userSchema = new StructType().add("API Well Number", "string").add("County", "string")
-            .add("Company Name", "string").add("API Hole Number", "string").add("Sidetrack Code", "string")
-            .add("Completion Code", "string").add("Well Type Code", "string").add("Production Field", "string")
-            .add("Well Status Code", "string").add("Well Name", "string").add("Town", "string")
-            .add("Producing Formation", "string").add("Months in Production", "string").add("Gas Produced, Mcf", "integer")
-            .add("Water Produced, bbl", "integer").add("Oil Produced, bbl", "integer").add("Reporting Year", "string")
-            .add("New Georeferenced Column","string");
+        StructType userSchema = new StructType().add("APIWellNumber", "string").add("County", "string")
+            .add("CompanyName", "string").add("APIHoleNumber", "string").add("SidetrackCode", "string")
+            .add("CompletionCode", "string").add("WellTypeCode", "string").add("ProductionField", "string")
+            .add("WellStatusCode", "string").add("WellName", "string").add("Town", "string")
+            .add("ProducingFormation", "string").add("MonthsInProduction", "string").add("GasProduced", "integer")
+            .add("WaterProduced", "integer").add("OilProduced", "integer").add("ReportingYear", "string")
+            .add("NewGeoreferencedColumn","string");
+        System.out.println("********************************************************************************");
 
         Dataset<Row> oilData = session.readStream()
-                        .option("sep", ",").schema(userSchema).csv("C:\\Users\\Garrison\\project-3-Spark\\project-3-Spark\\dummydata.csv");
+                        .option("sep", ",").option("header",false).schema(userSchema).csv("C:\\Users\\Garrison\\project-3-Spark\\project-3-Spark\\results*.csv");
     
-        
-        StreamingQuery query = oilData.writeStream()
+        System.out.println("********************************************************************************");
+
+
+        Dataset<Row> oilData2 = oilData.limit(20);
+
+        StreamingQuery query = oilData2.writeStream()
         .format("console")
         .start();
   
-      query.awaitTermination();
+        System.out.println(query.isActive());
+        query.awaitTermination();
+        System.out.println("********************************************************************************");
+
       
         // API Well Number,County,Company Name,API Hole Number,Sidetrack Code,
         
