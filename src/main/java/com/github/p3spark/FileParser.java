@@ -14,7 +14,7 @@ public class FileParser {
     public static void main(String[] args)
     {
         try {
-            parseCSV("dummydata.csv");
+            parseCSV("OaGAP.csv");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -22,7 +22,7 @@ public class FileParser {
     }
 
     private static void parseCSV(String fileName) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("results.csv"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("OaGAP2.csv"));
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         br.readLine(); //This is the headers. Don't 
             String inputLine;
