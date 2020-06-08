@@ -10,33 +10,33 @@ import java.io.Serializable;
 public class Schema implements Serializable {
 
   private static final long serialVersionUID = 1L;
-    private String API_Well_Number;
+    private String APIWellNumber;
     private String County;
-    private String Company_Name;
-    private String API_Hole_Number;
-    private String Sidetrack_Code;
-    private String Completion_Code;
-    private String Well_Type_Code;
-    private String Production_Field;
-    private String Well_Status_Code;
-    private String Well_Name;
+    private String CompanyName;
+    private String APIHoleNumber;
+    private String SidetrackCode;
+    private String CompletionCode;
+    private String WellTypeCode;
+    private String ProductionField;
+    private String WellStatusCode;
+    private String WellName;
     private String Town;
-    private String Producing_Formation;
-    private String Months_in_Production;
-    private int Gas_Produced;
-    private int Water_Produced;
-    private int Oil_Produced;
-    private String Reporting_Year;
-    private String New_Georeferenced_Column;
+    private String ProducingFormation;
+    private String MonthsinProduction;
+    private int GasProduced;
+    private int WaterProduced;
+    private int OilProduced;
+    private String ReportingYear;
+    private String NewGeoreferencedColumn;
 
 
     
-    public String getAPI_Well_Number() {
-        return API_Well_Number;
+    public String getAPIWellNumber() {
+        return APIWellNumber;
     }
 
-    public void setAPI_Well_Number(String aPI_Well_Number) {
-        API_Well_Number = aPI_Well_Number;
+    public void setAPIWellNumber(String aPIWellNumber) {
+        APIWellNumber = aPIWellNumber;
     }
 
     public String getCounty() {
@@ -47,68 +47,68 @@ public class Schema implements Serializable {
         County = county;
     }
 
-    public String getCompany_Name() {
-        return Company_Name;
+    public String getCompanyName() {
+        return CompanyName;
     }
 
-    public void setCompany_Name(String company_Name) {
-        Company_Name = company_Name;
+    public void setCompanyName(String companyName) {
+        CompanyName = companyName;
     }
 
-    public String getAPI_Hole_Number() {
-        return API_Hole_Number;
+    public String getAPIHoleNumber() {
+        return APIHoleNumber;
     }
 
-    public void setAPI_Hole_Number(String aPI_Hole_Number) {
-        API_Hole_Number = aPI_Hole_Number;
+    public void setAPIHoleNumber(String aPIHoleNumber) {
+        APIHoleNumber = aPIHoleNumber;
     }
 
-    public String getSidetrack_Code() {
-        return Sidetrack_Code;
+    public String getSidetrackCode() {
+        return SidetrackCode;
     }
 
-    public void setSidetrack_Code(String sidetrack_Code) {
-        Sidetrack_Code = sidetrack_Code;
+    public void setSidetrackCode(String sidetrackCode) {
+        SidetrackCode = sidetrackCode;
     }
 
-    public String getCompletion_Code() {
-        return Completion_Code;
+    public String getCompletionCode() {
+        return CompletionCode;
     }
 
-    public void setCompletion_Code(String completion_Code) {
-        Completion_Code = completion_Code;
+    public void setCompletionCode(String completionCode) {
+        CompletionCode = completionCode;
     }
 
-    public String getWell_Type_Code() {
-        return Well_Type_Code;
+    public String getWellTypeCode() {
+        return WellTypeCode;
     }
 
-    public void setWell_Type_Code(String well_Type_Code) {
-        Well_Type_Code = well_Type_Code;
+    public void setWellTypeCode(String wellTypeCode) {
+        WellTypeCode = wellTypeCode;
     }
 
-    public String getProduction_Field() {
-        return Production_Field;
+    public String getProductionField() {
+        return ProductionField;
     }
 
-    public void setProduction_Field(String production_Field) {
-        Production_Field = production_Field;
+    public void setProductionField(String productionField) {
+        ProductionField = productionField;
     }
 
-    public String getWell_Status_Code() {
-        return Well_Status_Code;
+    public String getWellStatusCode() {
+        return WellStatusCode;
     }
 
-    public void setWell_Status_Code(String well_Status_Code) {
-        Well_Status_Code = well_Status_Code;
+    public void setWellStatusCode(String wellStatusCode) {
+        WellStatusCode = wellStatusCode;
     }
 
-    public String getWell_Name() {
-        return Well_Name;
+    public String getWellName() {
+        return WellName;
     }
 
-    public void setWell_Name(String well_Name) {
-        Well_Name = well_Name;
+    public void setWellName(String wellName) {
+        WellName = wellName;
     }
 
     public String getTown() {
@@ -119,85 +119,85 @@ public class Schema implements Serializable {
         Town = town;
     }
 
-    public String getProducing_Formation() {
-        return Producing_Formation;
+    public String getProducingFormation() {
+        return ProducingFormation;
     }
 
-    public void setProducing_Formation(String producing_Formation) {
-        Producing_Formation = producing_Formation;
+    public void setProducingFormation(String producingFormation) {
+        ProducingFormation = producingFormation;
     }
 
-    public String getMonths_in_Production() {
-        return Months_in_Production;
+    public String getMonthsinProduction() {
+        return MonthsinProduction;
     }
 
-    public void setMonths_in_Production(String months_in_Production) {
-        Months_in_Production = months_in_Production;
+    public void setMonthsinProduction(String monthsinProduction) {
+        MonthsinProduction = monthsinProduction;
     }
 
-    public int getGas_Produced() {
-        return Gas_Produced;
+    public int getGasProduced() {
+        return GasProduced;
     }
 
-    public void setGas_Produced(int gas_Produced) {
-        Gas_Produced = gas_Produced;
+    public void setGasProduced(int gasProduced) {
+        GasProduced = gasProduced;
     }
 
-    public int getWater_Produced() {
-        return Water_Produced;
+    public int getWaterProduced() {
+        return WaterProduced;
     }
 
-    public void setWater_Produced(int water_Produced) {
-        Water_Produced = water_Produced;
+    public void setWaterProduced(int waterProduced) {
+        WaterProduced = waterProduced;
     }
 
-    public int getOil_Produced() {
-        return Oil_Produced;
+    public int getOilProduced() {
+        return OilProduced;
     }
 
-    public void setOil_Produced(int oil_Produced) {
-        Oil_Produced = oil_Produced;
+    public void setOilProduced(int oilProduced) {
+        OilProduced = oilProduced;
     }
 
-    public String getReporting_Year() {
-        return Reporting_Year;
+    public String getReportingYear() {
+        return ReportingYear;
     }
 
-    public void setReporting_Year(String reporting_Year) {
-        Reporting_Year = reporting_Year;
+    public void setReportingYear(String reportingYear) {
+        ReportingYear = reportingYear;
     }
 
-    public String getNew_Georeferenced_Column() {
-        return New_Georeferenced_Column;
+    public String getNewGeoreferencedColumn() {
+        return NewGeoreferencedColumn;
     }
 
-    public void setNew_Georeferenced_Column(String new_Georeferenced_Column) {
-        New_Georeferenced_Column = new_Georeferenced_Column;
+    public void setNewGeoreferencedColumn(String newGeoreferencedColumn) {
+        NewGeoreferencedColumn = newGeoreferencedColumn;
     }
 
-    public Schema(String aPI_Well_Number, String county, String company_Name, String aPI_Hole_Number,
-            String sidetrack_Code, String completion_Code, String well_Type_Code, String production_Field,
-            String well_Status_Code, String well_Name, String town, String producing_Formation,
-            String months_in_Production, int gas_Produced, int water_Produced, int oil_Produced, String reporting_Year,
-            String new_Georeferenced_Column) {
-        API_Well_Number = aPI_Well_Number;
+    public Schema(String aPIWellNumber, String county, String companyName, String aPIHoleNumber,
+            String sidetrackCode, String completionCode, String wellTypeCode, String productionField,
+            String wellStatusCode, String wellName, String town, String producingFormation,
+            String monthsinProduction, int gasProduced, int waterProduced, int oilProduced, String reportingYear,
+            String newGeoreferencedColumn) {
+        APIWellNumber = aPIWellNumber;
         County = county;
-        Company_Name = company_Name;
-        API_Hole_Number = aPI_Hole_Number;
-        Sidetrack_Code = sidetrack_Code;
-        Completion_Code = completion_Code;
-        Well_Type_Code = well_Type_Code;
-        Production_Field = production_Field;
-        Well_Status_Code = well_Status_Code;
-        Well_Name = well_Name;
+        CompanyName = companyName;
+        APIHoleNumber = aPIHoleNumber;
+        SidetrackCode = sidetrackCode;
+        CompletionCode = completionCode;
+        WellTypeCode = wellTypeCode;
+        ProductionField = productionField;
+        WellStatusCode = wellStatusCode;
+        WellName = wellName;
         Town = town;
-        Producing_Formation = producing_Formation;
-        Months_in_Production = months_in_Production;
-        Gas_Produced = gas_Produced;
-        Water_Produced = water_Produced;
-        Oil_Produced = oil_Produced;
-        Reporting_Year = reporting_Year;
-        New_Georeferenced_Column = new_Georeferenced_Column;
+        ProducingFormation = producingFormation;
+        MonthsinProduction = monthsinProduction;
+        GasProduced = gasProduced;
+        WaterProduced = waterProduced;
+        OilProduced = oilProduced;
+        ReportingYear = reportingYear;
+        NewGeoreferencedColumn = newGeoreferencedColumn;
     }
 
 

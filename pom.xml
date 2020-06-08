@@ -29,21 +29,27 @@
       <version>2.4.5</version>
     </dependency>
 
-    <dependency>
+
+        <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-sql_2.12</artifactId>
+      <artifactId>spark-streaming_2.12</artifactId>
       <version>2.4.5</version>
+    </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.12</artifactId>
+            <version>2.4.4</version>
+        </dependency>
+
+      <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.12</version>
     </dependency>
 
         <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-streaming_2.11</artifactId>
-      <version>2.4.5</version>
-    </dependency>
-
-        <dependency>
-      <groupId>org.apache.spark</groupId>
-      <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+      <artifactId>spark-streaming-kafka-0-10_2.12</artifactId>
       <version>2.4.5</version>
     </dependency>
 

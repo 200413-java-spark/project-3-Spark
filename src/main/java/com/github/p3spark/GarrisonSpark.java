@@ -1,4 +1,4 @@
-package com.github.p3spark;
+/*package com.github.p3spark;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -12,7 +12,7 @@ import org.apache.spark.sql.types.StructType;
  * If that's the case I might be on the right track.
  * It doesn't work for me right now because of winutil.exe. Whenever I try to run it the query gives me something along the lines of 
  *      "we cannot make file in this location due to chmod 600" and when I googled the error it said the lack of winutils.exe was the issue.
- */
+ *//*
 public class GarrisonSpark {
 
     
@@ -56,4 +56,4 @@ public class GarrisonSpark {
 
 
     }
-}
+}*/

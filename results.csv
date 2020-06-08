@@ -1,3 +1,4 @@
+API Well Number,County,Company Name,API Hole Number,Sidetrack Code,Completion Code,Well Type Code,Production Field,Well Status Code,Well Name,Town,Producing Formation,Months in Production,"Gas Produced, Mcf","Water Produced, bbl","Oil Produced, bbl",Reporting Year,New Georeferenced Column
 31003007660000,Allegany,"Stark, Eric",00766,00,00,OD,Fulmer Valley,IN,Brandes 08327,Wellsville,Richburg,0,0,0,0,2018,"Wellsville, NY (42.120693, -77.946058)"
 31003043620000,Allegany,Richardson Petroleum Corp.,04362,00,00,OD,Beech Hill-Independence,AC,Potter L 2,Independence,Fulmer Valley,12,35,1,1,2018,"Independence, NY (42.088045, -77.781386)"
 31003044210000,Allegany,Klein Oil & Logging,04421,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 1,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY (42.088045, -77.781386)"
