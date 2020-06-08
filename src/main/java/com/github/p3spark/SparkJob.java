@@ -17,10 +17,10 @@ public class SparkJob {
     	System.setProperty("hadoop.home.dir","C:/Program Files/hadoop");
     	Logger.getLogger("org.apache").setLevel(Level.WARN);
     	SparkSession spark=SparkSession.builder().appName("P3 App").master("local[*]").config("spark.sql.warehouse.dir","file:///c:/tmp/").getOrCreate();
-    	String n="Stark, Eric";
     	SimpleTransform instance=new SimpleTransform(spark);
     	//Dataset<Row> result=instance.filterCompanyName(n);
-    	Dataset<Row> result=instance.allCompanyName();
+    	//Dataset<Row> result=instance.allCompanyName();
+    	Dataset<Row> result=instance.activeWellForCountyYearly();
     	result.show(3000);
     	
     
