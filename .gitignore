@@ -20,7 +20,6 @@ bin/
 
 ### Eclipse ###
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
@@ -180,8 +179,6 @@ modules.xml
 .mtj.tmp/
 
 # Package Files #
-*.jar
-*.war
 *.nar
 *.ear
 *.zip
@@ -193,7 +190,6 @@ hs_err_pid*
 
 
 ### VisualStudioCode ###
-.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -204,6 +200,4 @@ hs_err_pid*
 .history
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,apachehadoop,eclipse,visualstudiocode,intellij+all
-spark-warehouse
-
-johntest
+spark-warehouse/*
