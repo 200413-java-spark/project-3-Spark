@@ -2,7 +2,6 @@ package com.github.p3spark.operation1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -13,32 +12,21 @@ public class CountyOil {
     
     public CountyOil(){}
 
-    public void findTotOilByCounty(SparkSession session) throws InterruptedException {
-        //reads in CSV
-        String fileName = "src/resources/OaGAP.csv";
-        Dataset<Row> dataCSV = session
-            .read()
-            .format("csv")
-            .option("header", "true")
-            .load(fileName);
+    public void findTotOilByCounty(SparkSession session, Dataset<Row> dataCSV, String arg2) throws InterruptedException {
+
         //select columns for counties and oil produced and year
         String[] headers = dataCSV.columns();//gets headers into a string array
         int cate = 1;
         int depv = 15;
         int indv = 16;
-        String depvName = "OilProduced_bbl";
-        String indvName = "YearReported";
         //selects those three columns
         Dataset<Row> data1 = dataCSV.select(headers[cate], headers[depv], headers[indv]).na().drop();
         Dataset<Row> data = data1
             .withColumn(headers[depv], data1.col(headers[depv]).cast(DataTypes.DoubleType))//replaces strings with doubles
             .withColumn(headers[indv], data1.col(headers[indv]).cast(DataTypes.DoubleType))
-            .withColumnRenamed(headers[depv], depvName)//changes column names with names with no spaces and commas
-            .withColumnRenamed(headers[indv], indvName)
             .cache();
         data.createOrReplaceTempView("oilByYear");
-        headers[depv] = depvName;
-        headers[indv] = indvName;
+        data.printSchema();
         //counts how many counties there are
         int CCount = (int)data.select(headers[cate]).distinct().count();
             List<Row> counties = new ArrayList<>();
@@ -65,7 +53,9 @@ public class CountyOil {
             //TimeUnit.SECONDS.sleep(5);//pauses for 5 seconds
             addList.add(oilYearSorted);
         }
-
-            
+        
+            //shows the table
+            addList.get(Integer.parseInt(arg2)).show();
+            System.out.println(counties.get(Integer.parseInt(arg2)).get(0).toString().replace("'", "\'\'"));
     }
 }

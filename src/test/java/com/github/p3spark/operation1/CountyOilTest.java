@@ -20,6 +20,6 @@ class CountyOilTest {
     @Test
     @DisplayName("Testing findTotOilByCounty method")
     void findTotOilByCounty() throws InterruptedException {
-        countyOil.findTotOilByCounty(session);
+        //countyOil.findTotOilByCounty(session);
     }
 }
