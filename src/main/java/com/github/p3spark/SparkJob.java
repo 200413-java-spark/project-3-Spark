@@ -1,5 +1,7 @@
 package com.github.p3spark;
 
+import com.github.p3spark.io.Database;
+import com.github.p3spark.io.FileParser;
 import com.github.p3spark.operation1.CountyOil;
 import com.github.p3spark.operation1.SimpleTransform;
 import com.github.p3spark.startup.CreateSparkSession;
@@ -35,10 +37,20 @@ public class SparkJob {
     	Logger.getLogger("org.apache").setLevel(Level.WARN);
     	//SparkSession spark=SparkSession.builder().appName("P3 App").master("local[*]").config("spark.sql.warehouse.dir","file:///c:/tmp/").getOrCreate();
     	String n="Stark, Eric";
-    	SimpleTransform instance=new SimpleTransform(session, csvData);
+    	SimpleTransform instance = new SimpleTransform(session, csvData);
     	//Dataset<Row> result=instance.filterCompanyName(n);
-    	Dataset<Row> result=instance.allCompanyName();
+        //Dataset<Row> result=instance.allCompanyName();
+        Dataset<Row> result=instance.activeWellForCountyYearly();
     	result.show(3000);
+        }
+
+        //Writing to a database
+        else if (args[0].equals("3")){
+        new Database().writeToDatabase(session);
+        }
+        //parse out the file
+        else if (args[0].equals("4")){
+        new FileParser().parseFile();
         }
 
     	session.close();

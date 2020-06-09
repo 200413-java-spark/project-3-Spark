@@ -40,7 +40,56 @@ public class SimpleTransform {
 		return result;
 	}
 	
-
+	//Total oil each county produce
+	public Dataset<Row> oilForCounty()
+	{
+		Dataset<Row> result=spark.sql("SELECT County,SUM(OilProducedbbl) AS Total_Oil_BBL from dataInfo where OilProduced_bbl is not null AND County is not null GROUP BY County ORDER BY County");
+		return result;
+	}
+	//Total water each county produce
+	public Dataset<Row> waterForCounty()
+	{
+		Dataset<Row> result=spark.sql("SELECT County,SUM(WaterProducedbbl) AS Total_Water_BBL from dataInfo where WaterProduced_bbl is not null AND County is not null GROUP BY County ORDER BY County");
+		return result;
+	}
+	//Total gas each county produce
+	public Dataset<Row> gasForCounty()
+	{
+		Dataset<Row> result=spark.sql("SELECT County,SUM(GasProducedMcf) AS Total_GAS_Mcf from dataInfo where GasProduced_Mcf is not null AND County is not null GROUP BY County ORDER BY County");
+		return result;
+	}
+	//Total gas,water, oil each county produce
+	public Dataset<Row> productionForCounty()
+	{
+		Dataset<Row> result=spark.sql("SELECT County,SUM(GasProducedMcf) AS Total_GAS_Mcf,SUM(WaterProduced_bbl) AS Total_Water_BBL,SUM(OilProduced_bbl) AS Total_Oil_BBL"
+				+ " from dataInfo where (GasProduced_Mcf is not null OR WaterProduced_bbl is not null OR  OilProduced_bbl is not null) "
+				+ "AND County is not null GROUP BY County ORDER BY County");
+		return result;
+	}
+	//Annual total gas,water, oil each county produce 
+	public Dataset<Row> productionForCountyYearly()
+	{
+		Dataset<Row> result=spark.sql("SELECT County, SUM(GasProduced_Mcf) AS Total_GAS_Mcf,"
+				+ "SUM(WaterProduced_bbl) AS Total_Water_BBL,SUM(OilProduced_bbl) AS Total_Oil_BBL, ReportingYear FROM dataInfo "
+				+ "where (GasProduced_Mcf is not null OR WaterProduced_bbl is not null OR  OilProduced_bbl is not null) AND County is not null "
+				+ "GROUP BY County,ReportingYear ORDER BY County,ReportingYear");
+				
+		return result;
+	}
+	//Current Active Well total for each County
+	public Dataset<Row> activeWellForCounty()
+	{
+		Dataset<Row> result=spark.sql("Select County, COUNT(WellStatusCode) AS Total_Well from dataInfo where County is not null AND WellStatusCode is not null AND WellStatusCode=='AC'"
+				+ " GROUP BY County ORDER BY County");
+		return result;
+	}
+	//Annual Active Well report for each County
+	public Dataset<Row> activeWellForCountyYearly()
+	{
+		Dataset<Row> result=spark.sql("Select County, COUNT(WellStatusCode) AS Total_Well, ReportingYear from dataInfo where County is not null AND WellStatusCode is not null AND WellStatusCode=='AC'"
+				+ " GROUP BY County, ReportingYear ORDER BY County,ReportingYear");
+		return result;
+	}
 	
 
 }

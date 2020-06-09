@@ -1,0 +1,231 @@
+API Well Number,County,Company Name,API Hole Number,Sidetrack Code,Completion Code,Well Type Code,Production Field,Well Status Code,Well Name,Town,Producing Formation,Months in Production,"Gas Produced, Mcf","Water Produced, bbl","Oil Produced, bbl",Reporting Year,New Georeferenced Column
+31003007660000,Allegany,"Stark, Eric",00766,00,00,OD,Fulmer Valley,IN,Brandes 08327,Wellsville,Richburg,0,0,0,0,2018,"Wellsville, NY
+(42.120693, -77.946058)"
+31003043620000,Allegany,Richardson Petroleum Corp.,04362,00,00,OD,Beech Hill-Independence,AC,Potter L 2,Independence,Fulmer Valley,12,35,1,1,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003044210000,Allegany,Klein Oil & Logging,04421,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 1,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003044250000,Allegany,"Plants and Goodwin, Inc.",04425,00,00,OD,Beech Hill-Independence,AC,Forsythe (Bloss) 1,Independence,Fulmer Valley,12,73,0,0,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003044800000,Allegany,"Plants and Goodwin, Inc.",04480,00,00,OD,Beech Hill-Independence,AC,Bloss Old Forysth Farm 1,Independence,Fulmer Valley,12,73,0,0,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003045980000,Allegany,"Smith, Rodney L.",04598,00,00,OD,Fulmer Valley,IN,Braunschweiger  2,Wellsville,Fulmer Valley,0,0,0,0,2018,"Wellsville, NY
+(42.120693, -77.946058)"
+31003048250000,Allegany,Richardson Petroleum Corp.,04825,00,00,OD,Beech Hill-Independence,AC,2 L. Potter,Independence,Fulmer Valley,12,0,0,35,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003049580000,Allegany,"Sandstone Oil & Gas Development, LLC",04958,00,00,OD,Richburg,AC,Slade Lot 29 F-23,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003049590000,Allegany,"Sandstone Oil & Gas Development, LLC",04959,00,00,IW,Richburg,IN,Slade Lot 29 B-11,Genesee,Richburg,0,0,0,0,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003049600000,Allegany,"Sandstone Oil & Gas Development, LLC",04960,00,00,IW,Richburg,IN,Slade Lot 29 G-2,Genesee,Richburg,0,0,0,0,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003049610000,Allegany,"Sandstone Oil & Gas Development, LLC",04961,00,00,OD,Richburg,AC,Slade Lot 29 H-3,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003049620000,Allegany,"Sandstone Oil & Gas Development, LLC",04962,00,00,OD,Richburg,AC,Slade Lot 29 E-45,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003049630000,Allegany,"Sandstone Oil & Gas Development, LLC",04963,00,00,OD,Richburg,AC,Slade Lot 29 C-45,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003050370000,Allegany,Richardson Petroleum Corp.,05037,00,00,OD,Beech Hill-Independence,AC,Stillman 3,Independence,Fulmer Valley,12,236,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003052680000,Allegany,"C.O.G. Development & Resources, Inc.",05268,00,00,OD,Richburg,IN,Meadowbank mb10,Bolivar,Richburg,0,0,0,0,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003052810000,Allegany,"Sandstone Oil & Gas Development, LLC",05281,00,00,OD,Richburg,AC,Slade Lot 29 H-23,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003052990000,Allegany,"Sandstone Oil & Gas Development, LLC",05299,00,00,OD,Richburg,AC,Slade Lot 29 H-34,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003053050000,Allegany,Klein Oil & Logging,05305,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 16,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003053390000,Allegany,Klein Oil & Logging,05339,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 18,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003053480000,Allegany,"Sandstone Oil & Gas Development, LLC",05348,00,00,OD,Richburg,AC,Slade Lot 29 G-45,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003053800000,Allegany,Richardson Petroleum Corp.,05380,00,00,IW,Beech Hill-Independence,AC,Quintette-Bledsoe  34,Independence,Fulmer Valley,12,56,1,2,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003053810000,Allegany,Richardson Petroleum Corp.,05381,00,00,OD,Beech Hill-Independence,AC,Potter 11,Independence,Fulmer Valley,12,35,1,1,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003053860000,Allegany,"Sandstone Oil & Gas Development, LLC",05386,00,00,IW,Richburg,IN,Slade Lot 29 I-33,Genesee,Richburg,0,0,0,0,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003054460000,Allegany,"C.O.G. Development & Resources, Inc.",05446,00,00,OD,Richburg,IN,Meadowbank mb11,Bolivar,Richburg,0,0,0,0,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003054630000,Allegany,Estate of James Robert Wells,05463,00,00,OD,Richburg,AC,Alma Hill Lot 79 1579,Alma,Richburg,1,0,0,1,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003054880000,Allegany,Estate of James Robert Wells,05488,00,00,OD,Richburg,AC,Alma Hill Lot 79 1679,Alma,Richburg,1,0,0,1,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003055030000,Allegany,Richardson Petroleum Corp.,05503,00,00,OD,Beech Hill-Independence,AC,Quintette-Bledsoe 36,Independence,Fulmer Valley,12,56,1,2,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003055050000,Allegany,Estate of James Robert Wells,05505,00,00,OW,Richburg,AC,7-79,Alma,Richburg,1,0,0,1,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003055180000,Allegany,Estate of James Robert Wells,05518,00,00,OW,Richburg,AC,13-79,Alma,Richburg,1,0,0,1,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003055390000,Allegany,"Saint John Exploration & Production, Inc.",05539,00,00,OD,Richburg,IN,Trio 501,Bolivar,Richburg,0,0,0,0,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003055480000,Allegany,Richardson Petroleum Corp.,05548,00,00,OD,Beech Hill-Independence,AC,Austin 19,Independence,Fulmer Valley,12,160,1,4,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003055540000,Allegany,J. J. Bucher Producing Corporation,05554,00,00,OD,Richburg,IN,Wheeler b-1,Bolivar,Richburg,0,0,0,0,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003060540000,Allegany,Klein Oil & Logging,06054,00,00,OD,Beech Hill-Independence,AC,Austin 40-4,Independence,Fulmer Valley,12,1,10,66,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003066480000,Allegany,Richardson Petroleum Corp.,06648,00,00,OD,Beech Hill-Independence,AC,Stillman 05,Independence,Fulmer Valley,12,236,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003066580000,Allegany,"Burdick, Jeffery H",06658,00,00,OD,Richburg,AC,Foreman 111,Bolivar,Waugh & Porter,4,0,2,7,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003067150000,Allegany,Klein Oil & Logging,06715,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 23,Independence,Fulmer Valley,6,1,2,6,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003068620000,Allegany,"Carney, Chad d/b/a Carney Oil",06862,00,00,OD,Richburg,IN,York 44,Scio,Fulmer Valley,0,0,0,0,2018,"Scio, NY
+(42.171429, -77.97865)"
+31003068630000,Allegany,"Burdick, Jeffery H",06863,00,00,OD,Richburg,AC,Foreman 112,Bolivar,Waugh & Porter,4,0,3,5,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003068750000,Allegany,"Simon of Bolivar Enterprises, Inc.",06875,00,00,IW,Richburg,IN,Wheeler 42 (W42),Bolivar,Richburg,0,0,0,0,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003068760000,Allegany,J. J. Bucher Producing Corporation,06876,00,00,OD,Richburg,IN,Wheeler B-2,Bolivar,Richburg,0,0,0,0,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003069680000,Allegany,"Carney, Chad d/b/a Carney Oil",06968,00,00,OD,Richburg,IN,York 46,Scio,Fulmer Valley,0,0,0,0,2018,"Scio, NY
+(42.171429, -77.97865)"
+31003070950000,Allegany,"Sandstone Oil & Gas Development, LLC",07095,00,00,OD,Richburg,AC,Slade Lot 29 F-11,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003071300000,Allegany,Richardson Petroleum Corp.,07130,00,00,OD,Beech Hill-Independence,AC,Oscar Potter 10,Independence,Fulmer Valley,12,35,1,1,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003071310000,Allegany,Richardson Petroleum Corp.,07131,00,00,OD,Beech Hill-Independence,AC,"Potter, L 3",Independence,Fulmer Valley,12,0,0,35,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003071520000,Allegany,Klein Oil & Logging,07152,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 24,Independence,Fulmer Valley,6,1,1,6,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003071650000,Allegany,Klein Oil & Logging,07165,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 26,Independence,Fulmer Valley,6,1,1,6,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003075030000,Allegany,PPP Future Development Inc.,07503,00,00,GD,Gordon Brook,IN,"Ramsey, A 1",Scio,Oriskany,0,0,0,0,2018,"Scio, NY
+(42.171429, -77.97865)"
+31003077440000,Allegany,Klein Oil & Logging,07744,00,00,OD,Beech Hill-Independence,AC,Austin 40-5,Independence,Fulmer Valley,12,1,11,66,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003078470000,Allegany,Richardson Petroleum Corp.,07847,00,00,OD,Beech Hill-Independence,AC,Quinette-Bledsoe 043,Independence,Fulmer Valley,12,56,1,2,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003080280000,Allegany,Klein Oil & Logging,08028,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 29,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003080290000,Allegany,Richardson Petroleum Corp.,08029,00,00,IW,Beech Hill-Independence,AC,Quinette-Bledsoe O33,Independence,Fulmer Valley,12,56,1,2,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003080320000,Allegany,Klein Oil & Logging,08032,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 30,Independence,Fulmer Valley,6,1,2,6,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003080330000,Allegany,Richardson Petroleum Corp.,08033,00,00,OD,Beech Hill-Independence,AC,Quintette Stillman 06,Independence,Fulmer Valley,12,236,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003080440000,Allegany,"C.O.G. Development & Resources, Inc.",08044,00,00,IW,Richburg,IN,Meadowbank 012,Bolivar,Waugh & Porter,0,0,0,0,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003080490000,Allegany,Klein Oil & Logging,08049,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 32,Independence,Fulmer Valley,6,1,3,10,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003082820000,Allegany,"Simon of Bolivar Enterprises, Inc.",08282,00,00,OD,Richburg,AC,Wheeler 43 (P43),Bolivar,Richburg,12,0,20,2,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003085790000,Allegany,"Sandstone Oil & Gas Development, LLC",08579,00,00,OD,Richburg,AC,Slade Lot 29 G-23,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003086090000,Allegany,"Sandstone Oil & Gas Development, LLC",08609,00,00,OD,Richburg,AC,Slade Lot 29 E-34,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003089130000,Allegany,Klein Oil & Logging,08913,00,00,OW,Richburg,AC,2-53/54 Kv,Alma,Richburg,12,1,1,5,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003091070000,Allegany,Klein Oil & Logging,09107,00,00,OD,Beech Hill-Independence,AC,Austin 40-6,Independence,Fulmer Valley,12,1,10,66,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003092290000,Allegany,Richardson Petroleum Corp.,09229,00,00,OD,Beech Hill-Independence,AC,Quintette-Stillman 9,Independence,Fulmer Valley,12,236,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003094340000,Allegany,"Sandstone Oil & Gas Development, LLC",09434,00,00,OD,Richburg,AC,Slade Lot 29 E-23,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003094600000,Allegany,Klein Oil & Logging,09460,00,00,OD,Richburg,AC,43 Black,Alma,Richburg,6,1,1,3,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003094700000,Allegany,Klein Oil & Logging,09470,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 33,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003094920000,Allegany,"Simon of Bolivar Enterprises, Inc.",09492,00,00,OD,Richburg,AC,Wheeler 46 (P46),Bolivar,Richburg,12,0,20,2,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003095590000,Allegany,Klein Oil & Logging,09559,00,00,OD,Richburg,AC,44 Black,Alma,Richburg,6,1,1,3,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003095620000,Allegany,Klein Oil & Logging,09562,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 35,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003095740000,Allegany,Klein Oil & Logging,09574,00,00,OW,Richburg,AC,4-53-68 Kv,Alma,Richburg,12,1,15,126,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003095950000,Allegany,Klein Oil & Logging,09595,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 36,Independence,Fulmer Valley,6,1,2,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003096130000,Allegany,"Plick Enterprises, Inc.",09613,00,00,OD,Fulmer Valley,AC,Fee 1,Andover,Fulmer Valley,12,1,1,2,2018,"Andover, NY
+(42.156405, -77.795231)"
+31003096150000,Allegany,Klein Oil & Logging,09615,00,00,OD,Richburg,AC,33-68,Alma,Richburg,12,1,18,127,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003096210000,Allegany,Klein Oil & Logging,09621,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 7,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003098590000,Allegany,Klein Oil & Logging,09859,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 37,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003099470000,Allegany,Richardson Petroleum Corp.,09947,00,00,OD,Beech Hill-Independence,AC,Quintette-Stillman 12,Independence,Fulmer Valley,12,236,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003100370000,Allegany,Richardson Petroleum Corp.,10037,00,00,OD,Beech Hill-Independence,AC,13 Quintette-Stillma,Independence,Fulmer Valley,12,236,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003100760000,Allegany,SK Enterprises,10076,00,00,OD,Richburg,AC,A-H Lot 80-3-80,Alma,Richburg,6,0,1,7,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003100980000,Allegany,SK Enterprises,10098,00,00,OD,Richburg,AC,A-H Lot 80-8-80,Alma,Richburg,6,0,1,4,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003100990000,Allegany,Richardson Petroleum Corp.,10099,00,00,OD,Beech Hill-Independence,AC,14 Quintette-Stillma,Independence,Fulmer Valley,12,237,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003101010000,Allegany,SK Enterprises,10101,00,00,OD,Richburg,AC,A-H Lot 80-4-80,Alma,Richburg,6,0,1,14,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003101180000,Allegany,"Plants and Goodwin, Inc.",10118,00,00,OD,Beech Hill-Independence,AC,Forsythe 11,Independence,Fulmer Valley,12,73,0,0,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003101440000,Allegany,SK Enterprises,10144,00,00,OD,Richburg,AC,A-H Lot 80-6-80,Alma,Richburg,6,0,5,5,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003102250000,Allegany,SK Enterprises,10225,00,00,OD,Richburg,AC,A-H Lot 80-9-80,Alma,Richburg,6,0,1,12,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003102260000,Allegany,SK Enterprises,10226,00,00,OD,Richburg,AC,A-H Lot 80-5-80,Alma,Richburg,6,0,1,4,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003102550000,Allegany,SK Enterprises,10255,00,00,OD,Richburg,AC,A-H Lot 80-10-80,Alma,Richburg,6,0,0,12,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003102560000,Allegany,Klein Oil & Logging,10256,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 39,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003102910000,Allegany,SK Enterprises,10291,00,00,OD,Richburg,AC,A-H Lot 80-7-80,Alma,Richburg,6,0,0,8,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003103170000,Allegany,Diana Pease & Steve Pease Revocable Trust,10317,00,00,GD,Alfred,AC,Blaisdell 1,Ward,Upper Devonian,12,1,0,0,2018,"Ward, NY
+(42.225739, -77.898903)"
+31003103740000,Allegany,Richardson Petroleum Corp.,10374,00,00,OD,Beech Hill-Independence,AC,46 Quintette-Bledsoe,Independence,Fulmer Valley,12,56,1,2,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003103920000,Allegany,Richardson Petroleum Corp.,10392,00,00,OD,Beech Hill-Independence,AC,41 Bayard Austin,Independence,Fulmer Valley,12,160,1,4,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003104460000,Allegany,Klein Oil & Logging,10446,00,00,OD,Richburg,AC,41-68 Lot 68,Alma,Richburg,12,1,20,126,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003104470000,Allegany,SK Enterprises,10447,00,00,OD,Richburg,AC,A-H Lot 80-A1-80,Alma,Richburg,1,0,0,1,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003104730000,Allegany,SK Enterprises,10473,00,00,OD,Richburg,AC,A-H Lot 80-2-80,Alma,Richburg,6,0,1,15,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003105680000,Allegany,SK Enterprises,10568,00,00,OD,Richburg,AC,A-H Lot 80-1-80,Alma,Richburg,6,0,1,5,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003105700000,Allegany,SK Enterprises,10570,00,00,OD,Richburg,AC,A-H Lot 80-11-80,Alma,Richburg,6,0,0,11,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003105750000,Allegany,"Plants and Goodwin, Inc.",10575,00,00,OD,Beech Hill-Independence,AC,Mervine 17,Independence,Fulmer Valley,12,209,8,33,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003105760000,Allegany,Richardson Petroleum Corp.,10576,00,00,OD,Beech Hill-Independence,AC,47 Quintette-Bledsoe,Independence,Fulmer Valley,12,56,1,2,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003105940000,Allegany,Klein Oil & Logging,10594,00,00,OD,Richburg,AC,43-68 Lot 68,Alma,Richburg,12,1,13,120,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003109300000,Allegany,Richardson Petroleum Corp.,10930,00,00,OD,Beech Hill-Independence,AC,15 Quintette-Stillma,Independence,Fulmer Valley,12,237,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003109650000,Allegany,Richardson Petroleum Corp.,10965,00,00,OD,Beech Hill-Independence,AC,16 Quintette-Stillma,Independence,Fulmer Valley,12,237,3,23,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003110650000,Allegany,"Sandstone Oil & Gas Development, LLC",11065,00,00,OD,Richburg,AC,Slade Lot 29 D-34,Genesee,Richburg,8,0,17,11,2018,"Genesee, NY
+(42.02693, -78.205893)"
+31003110720000,Allegany,"Plants and Goodwin, Inc.",11072,00,00,OD,Beech Hill-Independence,AC,Forsythe 13,Independence,Fulmer Valley,12,73,0,0,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003110880000,Allegany,"Zlomek, John",11088,00,00,OD,Richburg,AC,Vossler 0-3,Alma,Richburg,1,0,0,1,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003110890000,Allegany,"Zlomek, John",11089,00,00,OD,Richburg,AC,Vossler 0-4,Alma,Richburg,1,0,0,1,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003111040000,Allegany,Richardson Petroleum Corp.,11104,00,00,OD,Beech Hill-Independence,AC,Potter 12 (Old),Independence,Fulmer Valley,12,35,1,1,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003111340000,Allegany,"Plants and Goodwin, Inc.",11134,00,00,OD,Beech Hill-Independence,AC,Forsythe 14,Independence,Fulmer Valley,12,73,0,0,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003111560000,Allegany,Klein Oil & Logging,11156,00,00,OD,Beech Hill-Independence,AC,Austin-Bayard 44,Independence,Fulmer Valley,6,1,1,5,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003111580000,Allegany,"Zlomek, John",11158,00,00,OD,Richburg,AC,Vossler 0w-6,Alma,Richburg,1,0,0,1,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003112040000,Allegany,Klein Oil & Logging,11204,00,00,OD,Beech Hill-Independence,AC,Austin '40' 8,Independence,Fulmer Valley,12,1,10,67,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003113000000,Allegany,Richardson Petroleum Corp.,11300,00,00,OD,Beech Hill-Independence,AC,48 Quintette-Bledsoe,Independence,Fulmer Valley,12,56,1,3,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003113010000,Allegany,Richardson Petroleum Corp.,11301,00,00,OD,Beech Hill-Independence,AC,17 Quintette-Stillma,Independence,Fulmer Valley,12,55,1,3,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003113570000,Allegany,Estate of James Robert Wells,11357,00,00,OD,Richburg,AC,8-79 63t79t,Alma,Richburg,1,0,0,2,2018,"Alma, NY
+(42.012207, -78.060759)"
+31003113900000,Allegany,Richardson Petroleum Corp.,11390,00,00,OD,Beech Hill-Independence,AC,Bledsoe 49,Independence,Fulmer Valley,12,55,1,3,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003113920000,Allegany,"Simon of Bolivar Enterprises, Inc.",11392,00,00,OD,Richburg,AC,Wheeler 47 (P47),Bolivar,Richburg,12,0,20,2,2018,"Bolivar, NY
+(42.066701, -78.167667)"
+31003114420000,Allegany,Richardson Petroleum Corp.,11442,00,00,OD,Beech Hill-Independence,AC,20 Norton-Clark,Independence,Fulmer Valley,12,81,2,27,2018,"Independence, NY
+(42.088045, -77.781386)"
+31003114940000,Allegany,Richardson Petroleum Corp.,11494,00,00,OD,Beech Hill-Independence,AC,21 Norton-Clark,Independence,Fulmer Valley,12,81,2,27,2018,"Independence, NY
+(42.088045, -77.781386)"
