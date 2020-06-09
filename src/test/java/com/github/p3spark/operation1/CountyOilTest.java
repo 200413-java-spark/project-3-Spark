@@ -3,6 +3,7 @@ package com.github.p3spark.operation1;
 import com.github.p3spark.startup.CreateSparkSession;
 import org.apache.spark.sql.SparkSession;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CountyOilTest {
@@ -17,6 +18,7 @@ class CountyOilTest {
     }
 
     @Test
+    @DisplayName("Testing findTotOilByCounty method")
     void findTotOilByCounty() throws InterruptedException {
         countyOil.findTotOilByCounty(session);
     }

@@ -4,47 +4,54 @@ import com.github.p3spark.startup.CreateSparkSession;
 import org.apache.spark.sql.SparkSession;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SimpleTransform007Test {
-    SimpleTransform007 simpleTransform007;
+class SimpleTransform0Test {
+    SimpleTransform0 simpleTransform0;
 
     @BeforeEach
     void setUp() {
         CreateSparkSession startSession = CreateSparkSession.getInstance();
         SparkSession session = startSession.getSession();
-        simpleTransform007 = new SimpleTransform007(session);
+        simpleTransform0 = new SimpleTransform0(session);
     }
 
     @Test
+    @DisplayName("Testing avgMonthsInProduction method")
     void avgMonthsInProduction() {
-        simpleTransform007.avgMonthsInProduction();
+        simpleTransform0.avgMonthsInProduction();
     }
 
     @Test
+    @DisplayName("Testing totalWaterProduced method")
     void totalWaterProduced() {
-        simpleTransform007.totalWaterProduced();
+        simpleTransform0.totalWaterProduced();
     }
 
     @Test
+    @DisplayName("Testing totalGasProduced method")
     void totalGasProduced() {
-        simpleTransform007.totalGasProduced();
+        simpleTransform0.totalGasProduced();
     }
 
     @Test
+    @DisplayName("Testing completionCodeSummary method")
     void completionCodeSummary() {
-        simpleTransform007.completionCodeSummary();
+        simpleTransform0.completionCodeSummary();
     }
 
     @Test
+    @DisplayName("Testing wellTypeCodeSummary method")
     void wellTypeCodeSummary() {
-        simpleTransform007.wellTypeCodeSummary();
+        simpleTransform0.wellTypeCodeSummary();
     }
 
     @Test
+    @DisplayName("Testing sidetrackCodeSummary method")
     void sidetrackCodeSummary() {
-        simpleTransform007.sidetrackCodeSummary();
+        simpleTransform0.sidetrackCodeSummary();
     }
 }

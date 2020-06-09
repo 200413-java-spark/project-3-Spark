@@ -4,12 +4,12 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
-public class SimpleTransform007 {
+public class SimpleTransform0 {
     private static Dataset<Row> ds;
     private static Dataset<Row> ds_rename;
     private static SparkSession spark;
 
-    public SimpleTransform007(SparkSession sparkSession) {
+    public SimpleTransform0(SparkSession sparkSession) {
         ds = sparkSession.read().option("header", true).csv("Oil.csv");
         spark = sparkSession;
         ds_rename = ds.withColumnRenamed("Company Name", "CompanyName")
