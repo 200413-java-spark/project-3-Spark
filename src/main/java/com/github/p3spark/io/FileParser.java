@@ -24,7 +24,7 @@ public class FileParser {
     }
 
     private static void parseCSV(String fileName) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("OaGAP2.csv"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/resources/OaGAP2.csv"));
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         br.readLine(); //This is the headers. Don't 
             String inputLine;

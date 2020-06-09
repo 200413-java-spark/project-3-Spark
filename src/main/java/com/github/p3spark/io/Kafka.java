@@ -24,7 +24,7 @@ public class Kafka {
 
     public static void main(String[] args) throws InterruptedException
     {
-        System.out.println("*****************************Before conf*****************************************");
+    System.out.println("*****************************Before conf*****************************************");
     SparkConf conf = new SparkConf().setAppName("test").setMaster("local[*]");
     JavaStreamingContext context = new JavaStreamingContext(conf, Durations.seconds(1));
     System.out.println("******************************After conf****************************************");

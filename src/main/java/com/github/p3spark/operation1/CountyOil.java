@@ -16,7 +16,7 @@ public class CountyOil {
 
         //select columns for counties and oil produced and year
         String[] headers = dataCSV.columns();//gets headers into a string array
-        int cate = 1;
+        int cate = 17;
         int depv = 15;
         int indv = 16;
         //selects those three columns
@@ -34,12 +34,12 @@ public class CountyOil {
 
         List<Dataset<Row>> addList = new ArrayList<>();
 
-        for (int i = 0; i < CCount; i++){
+        //for (int i = 0; i < CCount; i++){
             //iterates through each county and shows a table of how much oil
             //was produced each year
             Dataset<Row> pickTable = session.sql("SELECT "+headers[depv]+
             ", "+headers[indv]+" FROM oilByYear WHERE "+headers[cate]+
-            "=\'"+counties.get(i).get(0).toString().replace("'", "\'\'")+"\'").cache();
+            "=\'"+counties.get(0).get(0).toString().replace("'", "\'\'")+"\'").cache();
             pickTable.createOrReplaceTempView("pickTable");
             //sums up the totals
             Dataset<Row> oilYear = session.sql("SELECT "+headers[indv]+
@@ -52,7 +52,7 @@ public class CountyOil {
             //System.out.println(counties.get(i).get(0).toString().replace("'", "\'\'"));
             //TimeUnit.SECONDS.sleep(5);//pauses for 5 seconds
             addList.add(oilYearSorted);
-        }
+        //}
         
             //shows the table
             addList.get(Integer.parseInt(arg2)).show();
