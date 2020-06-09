@@ -13,7 +13,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <exec.mainClass>
+      com.github.p3spark.FileParser
+    </exec.mainClass>
   </properties>
+
 
   <dependencies>
     <dependency>
@@ -83,7 +87,7 @@
               <manifest>
                 <addClasspath>true</addClasspath>
                 <classpathPrefix>dependency/</classpathPrefix>
-                <mainClass>com.github.p3spark.SparkJob</mainClass>
+                <mainClass> com.github.p3spark.FileParser</mainClass>
               </manifest>
             </archive>       
           </configuration>
