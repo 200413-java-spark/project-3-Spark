@@ -1,10 +1,9 @@
 package com.github.p3spark.startup;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.streaming.StreamingQuery;
@@ -41,8 +40,7 @@ public class Consumer {
 
     }
 
-
-    public void builder() throws StreamingQueryException {
+    public void builder() {
         spark = SparkSession
                 .builder()
                 .appName("consumer")
@@ -66,6 +64,10 @@ public class Consumer {
                 .start();
 
 
-        query.awaitTermination();
+        try {
+            query.awaitTermination();
+        } catch (StreamingQueryException e) {
+            e.printStackTrace();
+        }
     }
 }
