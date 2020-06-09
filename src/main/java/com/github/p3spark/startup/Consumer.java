@@ -59,8 +59,6 @@ public class Consumer {
         df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)");
 
 
-
-
         // Start running the query that prints the running counts to the console
         query = df.writeStream()
                 .outputMode("complete")
@@ -70,3 +68,4 @@ public class Consumer {
 
         query.awaitTermination();
     }
+}
