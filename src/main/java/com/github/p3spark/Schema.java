@@ -29,7 +29,6 @@ public class Schema implements Serializable {
     private String ReportingYear;
     private String NewGeoreferencedColumn;
 
-
     
     public String getAPIWellNumber() {
         return APIWellNumber;
