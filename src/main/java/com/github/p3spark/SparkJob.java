@@ -20,8 +20,8 @@ public class SparkJob {
     	SimpleTransform instance=new SimpleTransform(spark);
     	//Dataset<Row> result=instance.filterCompanyName(n);
     	//Dataset<Row> result=instance.allCompanyName();
-    	Dataset<Row> result=instance.activeWellForCountyYearly();
-    	result.show(3000);
+    	Dataset<Row> result=instance.latlongYearly(false);
+    	result.show(3000, false);
     	
     
     	spark.close();
