@@ -8,7 +8,7 @@ class ConsumerTest {
 
     @BeforeEach
     void setUp() {
-        Consumer consumer = new Consumer();
+         consumer = new Consumer();
     }
 
     @AfterEach
@@ -16,8 +16,8 @@ class ConsumerTest {
     }
 
     @Test
-    @Disabled
     @DisplayName("Testing builder method")
+    @Disabled
     void builder() {
         consumer.builder();
 //        test technically works but the streaming context is a infinite loop so I don't know how to test something like that yet
