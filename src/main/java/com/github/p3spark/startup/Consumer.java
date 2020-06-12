@@ -6,10 +6,7 @@ import com.github.p3spark.operation1.SimpleTransform;
 import com.github.p3spark.utils.ConfigProperties;
 import org.apache.log4j.Level;
 import org.apache.spark.api.java.function.FlatMapFunction;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Encoders;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.*;
 import org.apache.spark.sql.streaming.StreamingQuery;
 import org.apache.spark.sql.streaming.StreamingQueryException;
 import org.apache.spark.sql.streaming.Trigger;
@@ -19,6 +16,13 @@ import org.apache.spark.sql.types.StructType;
 
 public class Consumer {
         ConfigProperties configProperties = new ConfigProperties();
+
+        String dburl = configProperties.getUrl();
+        String dbusername = configProperties.getUser();
+        String dbpassword = configProperties.getPassword();
+        String table = configProperties.getDbtable();
+        String driver = configProperties.getDriver();
+
         String kafkaUrl = configProperties.getKafkaurl();
         String kafkaTopic = configProperties.getKafkatopic();
 
@@ -74,24 +78,28 @@ public class Consumer {
                         .start();
 
                 while (initDF.isActive()) {
-                        try {
-                                Thread.sleep(10000);
-                                Dataset<Row> test1 = spark.sql("select * from initDF");
+                        //                                Thread.sleep(10000);
 
-                                Dataset<Row> json = test1.select(from_json(col("value"), oilSchema)
-                                        .as("data"))
-                                        .select("data.*");
+                        Dataset<Row> test1 = spark.sql("select * from initDF");
 
-                                json = new DataReader().parseHeaders(json);
+                        Dataset<Row> json = test1.select(from_json(col("value"), oilSchema)
+                                .as("data"))
+                                .select("data.*");
 
-                                Dataset<Row> result= new SimpleTransform(spark, json).productionForCountyYearly();
-    	                        result.show(1000);
+                        json = new DataReader().parseHeaders(json);
 
+                        Dataset<Row> result= new SimpleTransform(spark, json).productionForCountyYearly();
+                        result.show(1000);
 
-                        } catch (InterruptedException e) {
-                                //prints stack trace if interrupted
-                                e.printStackTrace();
-                        }
+                        result.write().format("jdbc")
+                                .option("url", dburl)
+                                .option("driver", driver)
+                                .option("dbtable", table)
+                                .option("user", dbusername)
+                                .option("password", dbpassword)
+                                .mode(SaveMode.Overwrite)
+                                .save();
+
                 }
 
         // Start running the query that prints the running counts to the console

@@ -29,6 +29,10 @@ public class ConfigProperties {
         return properties.getProperty("driver");
     }
 
+    public String getUrl() {
+        return properties.getProperty("url");
+    }
+
     public String getDbtable() {
         return properties.getProperty("dbtable");
     }

@@ -23,46 +23,11 @@ public class SparkJob {
         Dataset<Row> csvData = new DataReader().readInFile(session);
 
 
-        //in the command line, the first argument needs to be "1" for the next part of the code to work
-        //additionally, it needs an integer to display a county and yearly oil production as the second argument
-        if (args[0].equals("1")){
-            System.out.println("This is a test!");
-            try {
-                new CountyOil().findTotOilByCounty(session, csvData, args[1]);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        else if (args[0].equals("2")){
-    	//System.setProperty("hadoop.home.dir","C:/Program Files/hadoop");
-    	Logger.getLogger("org.apache").setLevel(Level.WARN);
-    	//SparkSession spark=SparkSession.builder().appName("P3 App").master("local[*]").config("spark.sql.warehouse.dir","file:///c:/tmp/").getOrCreate();
-    	String n="Stark, Eric";
-    	SimpleTransform instance = new SimpleTransform(session, csvData);
-    	//Dataset<Row> result=instance.filterCompanyName(n);
-        //Dataset<Row> result=instance.allCompanyName();
-        //Dataset<Row> result=instance.activeWellForCountyYearly();
-        Dataset<Row> result=instance.latlongYearly(false);
-    	result.show(3000);
-        }
-
-        //Writing to a database
-        else if (args[0].equals("3")){
-        new Database().writeToDatabase(session);
-        }
-        //parse out the file
-        else if (args[0].equals("4")){
-        new FileParser().parseFile();
-        }
+        new Consumer().builder(session);
 
 
-        else if (args[0].equals("5")){
-            new Consumer().builder(session); 
-        }
-
-    	session.close();
+        session.close();
 
     }
-    
+
 }
