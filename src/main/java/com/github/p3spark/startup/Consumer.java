@@ -12,6 +12,7 @@ import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.streaming.StreamingQuery;
 import org.apache.spark.sql.streaming.StreamingQueryException;
 import org.apache.spark.sql.streaming.Trigger;
+import static org.apache.spark.sql.functions.*;
 
 import org.apache.spark.sql.types.StructType;
 
@@ -85,18 +86,23 @@ public class Consumer {
                                 Thread.sleep(10000);
                                 Dataset<Row> test1 = spark.sql("select * from initDF");
                                 //testing
-                                Dataset<String> words = test1.as(Encoders.STRING()).flatMap(
+                                /*Dataset<String> words = test1.as(Encoders.STRING()).flatMap(
                                 (FlatMapFunction<String, String>) x -> Arrays.asList(x.split(" ")).iterator(),
                                 Encoders.STRING());
         
                                 // Generate running word count
                                 Dataset<Row> wordCounts = words.groupBy("value").count();
-                                wordCounts.show();
+                                wordCounts.show();*/
                                 /*String[] headers = test1.columns();
                                 for(int i =0; i < headers.length; i++){
                                         System.out.println(headers[i]);
                                 }
                                 System.out.println(test1.col("value"));*/
+
+                                test1.select(from_json(col("value"), oilSchema)
+                                        .as("data"))
+                                        .select("data.*")
+                                        .show(10);
 
 
                         } catch (InterruptedException e) {
