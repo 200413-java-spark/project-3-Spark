@@ -26,9 +26,9 @@ class DatabaseTest {
     void tearDown() {
     }
 
-    @Test
-    @Disabled
-    void writeToDatabase() {
-        database.writeToDatabase(session);
-    }
+    // @Test
+    // @Disabled
+    // void writeToDatabase() {
+    //     database.writeToDatabase(session);
+    // }
 }

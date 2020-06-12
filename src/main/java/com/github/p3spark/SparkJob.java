@@ -20,12 +20,19 @@ public class SparkJob {
         CreateSparkSession startSession = CreateSparkSession.getInstance(); // Starts SparkSession
         SparkSession session = startSession.getSession(); // pulls a reference to the session
         //Generates the full CSV dataset with modified column names
-        Dataset<Row> csvData = new DataReader().readInFile(session);
 
+        // Dataset<Row> csvData = new DataReader().readInFile(session);
+        // new Consumer().builder(session);
 
-        new Consumer().builder(session);
+        Dataset<Row> dummyData = session.read().option("header", "true")
+        .option("sep", ",").option("inferSchema", "true").csv("dummydata.csv").toDF();
 
+        Dataset<Row> dummyData2 = dummyData.select("County", "Oil Produced, bbl");
 
+        new Database().writeToDatabase(session, dummyData2, "table3");
+        Dataset<Row> result = new Database().readFromDatabase(session, "table3");
+        result.show(20);
+        
         session.close();
 
     }

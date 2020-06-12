@@ -1,16 +1,15 @@
 API Well Number,County,Company Name,API Hole Number,Sidetrack Code,Completion Code,Well Type Code,Production Field,Well Status Code,Well Name,Town,Producing Formation,Months in Production,"Gas Produced, Mcf","Water Produced, bbl","Oil Produced, bbl",Reporting Year,New Georeferenced Column
-3.10091E+13,Cattaraugus,Seneca Resources Corp.,13391,0,0,GD,Dayton,AC,Lipinski(Shead)1528-I,Persia,Onondaga-Bass Island,11,584,0,0,2003,"Persia, NY
-(42.384131, -78.936278)"
-3.10091E+13,Cattaraugus,Iroquois Gas Corp.,13400,0,0,OD,Not Applicable,IN,Kenworth,UNK,Not Applicable,,,,,2003,
-3.10091E+13,Cattaraugus,Seneca Resources Corp.,13410,0,0,GD,Lakeshore,AC,Kewlley 1686-I,Persia,Medina,12,682,0,0,2003,"Persia, NY
-(42.384131, -78.936278)"
-3.10091E+13,Cattaraugus,Iroquois Gas Corp.,13412,0,0,OD,Not Applicable,IN,Moran,UNK,Not Applicable,,,,,2003,
-3.10091E+13,Cattaraugus,Iroquois Gas Corp.,13419,0,0,OD,Not Applicable,IN,Koelzow,UNK,Not Applicable,,,,,2003,
-3.10091E+13,Cattaraugus,Iroquois Gas Corp.,13427,0,0,OD,Not Applicable,IN,L.Angore (Bridges),UNK,Not Applicable,,,,,2003,
-3.10091E+13,Cattaraugus,Iroquois Gas Corp.,13428,0,0,OD,Not Applicable,IN,E.Blackman,UNK,Not Applicable,,,,,2003,
-3.10091E+13,Cattaraugus,SWEPI LP,13522,0,0,OD,Bradford,AC,Enterprise Transit St 56,Allegany,"Chipmunk, Bradford 2nd & 3rd",,,,99,2003,"Allegany, NY
-(42.088061, -78.491258)"
-3.10091E+13,Cattaraugus,"East Resources, Inc.",13523,0,0,IW,Bradford,PA,Enterprise Transit St 095,Allegany,"Chipmunk, Bradford 2nd & 3rd",,,2327,,2003,"Allegany, NY
-(42.088061, -78.491258)"
-3.10091E+13,Cattaraugus,"East Resources, Inc.",13524,0,0,IW,Bradford,PA,Enterprise Transit St 092,Allegany,"Chipmunk, Bradford 2nd & 3rd",,,2327,,2003,"Allegany, NY
-(42.088061, -78.491258)"
+3.1003E+13,Allegany,Hanley & Bird,233,0,0,GW,Not Applicable,PA,Vossler Katherine 1,Alma,Not Applicable,,,,,2001,"Alma, NY (42.012207, -78.060759)"
+3.1003E+13,Allegany,National Fuel Gas Supply Corp.,379,0,0,MS,Beech Hill,AC,Moynihan (N146) EC-495,Alma,Oriskany,0,0,0,0,2001,"Alma, NY (42.012207, -78.060759)"
+3.1003E+13,Allegany,National Fuel Gas Supply Corp.,387,0,0,GD,State Line,PA,"Costello, M 1",Willing,Oriskany,0,0,0,0,2001,"Willing, NY (42.085346, -77.922864)"
+3.1003E+13,Allegany,National Fuel Gas Supply Corp.,471,0,0,MS,Beech Hill,PA,Burns T (2317) SC-517,Alma,Oriskany,0,0,0,0,2001,"Alma, NY (42.012207, -78.060759)"
+3.1003E+13,Allegany,"Stark, Eric",766,0,0,OD,Fulmer Valley,AC,Brandes 08327,Wellsville,Richburg,3,0,1,5,2001,"Wellsville, NY (42.120693, -77.946058)"
+3.1003E+13,Allegany,Richardson Petroleum Corp.,4362,0,0,OD,Beech Hill-Independence,AC,Potter L 2,Independence,Fulmer Valley,12,0,0,29,2001,"Independence, NY (42.088045, -77.781386)"
+3.1003E+13,Allegany,Thornton Co.,4381,0,0,OW,Not Applicable,NR,Fassett C L Oliphant 63t,Alma,Not Applicable,,,,,2001,"Alma, NY (42.012207, -78.060759)"
+3.1003E+13,Allegany,Klein Oil & Logging,4421,0,0,OD,Beech Hill-Independence,AC,Austin-Bayard 1,Independence,Fulmer Valley,12,0,8,,2001,"Independence, NY (42.088045, -77.781386)"
+3.1003E+13,Allegany,"Plants & Goodwin, Inc.",4425,0,0,OD,Beech Hill-Independence,AC,Forsythe (Bloss) 1,Independence,Fulmer Valley,12,0,0,,2001,"Independence, NY (42.088045, -77.781386)"
+3.1003E+13,Allegany,"Plants & Goodwin, Inc.",4480,0,0,OD,Beech Hill-Independence,AC,Bloss Old Forysth Farm 1,Independence,Fulmer Valley,12,0,14,,2001,"Independence, NY (42.088045, -77.781386)"
+3.1003E+13,Allegany,Yahn & Yahn Inc.,4541,0,0,OD,Beech Hill-Independence,IN,Austin A 11,Independence,Fulmer Valley,12,0,14,,2001,"Independence, NY (42.088045, -77.781386)"
+3.1003E+13,Allegany,Yahn & Yahn Inc.,4657,0,0,IW,Beech Hill-Independence,PA,012-Godown,Independence,Fulmer Valley,12,0,12,,2001,"Independence, NY (42.088045, -77.781386)"
+3.1003E+13,Allegany,Richardson Petroleum Corp.,4825,0,0,OD,Beech Hill-Independence,AC,2 L. Potter,Independence,Fulmer Valley,12,0,0,29,2001,"Independence, NY (42.088045, -77.781386)"
+3.1003E+13,Allegany,Sandstone Development,4958,0,0,OD,Richburg,IN,Slade Lot 29 F-23,Genesee,Richburg,12,0,0,,2001,"Genesee, NY (42.02693, -78.205893)"
