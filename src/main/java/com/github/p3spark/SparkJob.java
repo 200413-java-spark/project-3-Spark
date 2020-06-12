@@ -4,6 +4,7 @@ import com.github.p3spark.io.Database;
 import com.github.p3spark.io.FileParser;
 import com.github.p3spark.operation1.CountyOil;
 import com.github.p3spark.operation1.SimpleTransform;
+import com.github.p3spark.startup.Consumer;
 import com.github.p3spark.startup.CreateSparkSession;
 import com.github.p3spark.startup.DataReader;
 
@@ -20,6 +21,7 @@ public class SparkJob {
         SparkSession session = startSession.getSession(); // pulls a reference to the session
         //Generates the full CSV dataset with modified column names
         Dataset<Row> csvData = new DataReader().readInFile(session);
+
 
         //in the command line, the first argument needs to be "1" for the next part of the code to work
         //additionally, it needs an integer to display a county and yearly oil production as the second argument
@@ -40,7 +42,8 @@ public class SparkJob {
     	SimpleTransform instance = new SimpleTransform(session, csvData);
     	//Dataset<Row> result=instance.filterCompanyName(n);
         //Dataset<Row> result=instance.allCompanyName();
-        Dataset<Row> result=instance.activeWellForCountyYearly();
+        //Dataset<Row> result=instance.activeWellForCountyYearly();
+        Dataset<Row> result=instance.latlongYearly(false);
     	result.show(3000);
         }
 
@@ -51,6 +54,11 @@ public class SparkJob {
         //parse out the file
         else if (args[0].equals("4")){
         new FileParser().parseFile();
+        }
+
+
+        else if (args[0].equals("5")){
+            new Consumer().builder(session); 
         }
 
     	session.close();

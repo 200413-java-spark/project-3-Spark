@@ -10,7 +10,7 @@ public class DataReader {
 
     public Dataset<Row> readInFile(SparkSession session){
         //reads in CSV
-        String fileName = "src/main/resources/OaGAP2.csv";
+        String fileName = "src/main/resources/OaGAP3.csv";
         Dataset<Row> dataCSV = session
             .read()
             .format("csv")

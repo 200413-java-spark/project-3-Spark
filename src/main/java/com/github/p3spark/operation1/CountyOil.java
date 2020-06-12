@@ -16,7 +16,7 @@ public class CountyOil {
 
         //select columns for counties and oil produced and year
         String[] headers = dataCSV.columns();//gets headers into a string array
-        int cate = 17;
+        int cate = 1;
         int depv = 15;
         int indv = 16;
         //selects those three columns

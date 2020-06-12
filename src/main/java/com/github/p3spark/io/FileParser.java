@@ -14,7 +14,7 @@ public class FileParser {
     
     public void parseFile()
     {
-        String fileName = "src/resources/OaGAP.csv";
+        String fileName = "src/main/resources/OaGAP.csv";
         try {
             parseCSV(fileName);
         } catch (IOException e) {
