@@ -1,27 +1,22 @@
 package com.github.p3spark.startup;
 
-import java.util.Arrays;
+import static org.apache.spark.sql.functions.col;
+import static org.apache.spark.sql.functions.from_json;
 
+import com.github.p3spark.io.Database;
 import com.github.p3spark.operation1.SimpleTransform;
 import com.github.p3spark.utils.ConfigProperties;
-import org.apache.log4j.Level;
-import org.apache.spark.api.java.function.FlatMapFunction;
-import org.apache.spark.sql.*;
-import org.apache.spark.sql.streaming.StreamingQuery;
-import org.apache.spark.sql.streaming.StreamingQueryException;
-import org.apache.spark.sql.streaming.Trigger;
-import static org.apache.spark.sql.functions.*;
 
+import org.apache.log4j.Level;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.streaming.StreamingQuery;
+import org.apache.spark.sql.streaming.Trigger;
 import org.apache.spark.sql.types.StructType;
 
 public class Consumer {
         ConfigProperties configProperties = new ConfigProperties();
-
-        String dburl = configProperties.getUrl();
-        String dbusername = configProperties.getUser();
-        String dbpassword = configProperties.getPassword();
-        String table = configProperties.getDbtable();
-        String driver = configProperties.getDriver();
 
         String kafkaUrl = configProperties.getKafkaurl();
         String kafkaTopic = configProperties.getKafkatopic();
@@ -37,7 +32,7 @@ public class Consumer {
                 // added to remove messy messages
 
                 // Create DataFrame representing the stream of input lines from connection to
-                // localhost:9999
+
                 //creating schema to be used later to parse out in JSON format from kafka
                 StructType oilSchema = new StructType()
                         .add("API Well Number", "string")
@@ -91,32 +86,8 @@ public class Consumer {
                         Dataset<Row> result= new SimpleTransform(spark, json).productionForCountyYearly();
                         result.show(1000);
 
-                        result.write().format("jdbc")
-                                .option("url", dburl)
-                                .option("driver", driver)
-                                .option("dbtable", table)
-                                .option("user", dbusername)
-                                .option("password", dbpassword)
-                                .mode(SaveMode.Overwrite)
-                                .save();
+                        new Database().writeToDatabase(result,1);
 
-                }
-
-        // Start running the query that prints the running counts to the console
-        /*StreamingQuery query = df
-                .selectExpr("CAST(value AS STRING)")
-                .writeStream()
-                .outputMode("update")
-                .format("console")
-                .start();
-
-        
-        try {
-            query.awaitTermination();
-        } catch (StreamingQueryException e) {
-            e.printStackTrace();
-        }*/
-
-        
+                }        
     }
 }

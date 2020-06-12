@@ -2,25 +2,11 @@ package com.github.p3spark.startup;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
 
 public class DataReader {
 
     public DataReader(){}
 
-    public Dataset<Row> readInFile(SparkSession session){
-        //reads in CSV
-        String fileName = "src/main/resources/OaGAP3.csv";
-        Dataset<Row> dataCSV = session
-            .read()
-            .format("csv")
-            .option("header", "true")
-            .load(fileName);
-        //select columns for counties and oil produced and year
-        dataCSV = parseHeaders(dataCSV);
-        return dataCSV;
-    
-    }
     public Dataset<Row> parseHeaders(Dataset<Row> dataCSV){
         String[] headers = dataCSV.columns();//gets headers into a string array
 

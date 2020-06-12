@@ -33,7 +33,15 @@ public class ConfigProperties {
         return properties.getProperty("url");
     }
 
-    public String getDbtable() {
+    public String getDbtable1() {
+        return properties.getProperty("dbtable");
+    }
+
+    public String getDbtable2() {
+        return properties.getProperty("dbtable");
+    }
+
+    public String getDbtable3() {
         return properties.getProperty("dbtable");
     }
 
