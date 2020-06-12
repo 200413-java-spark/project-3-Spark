@@ -21,7 +21,7 @@ class ConfigPropertiesTest {
 
     @Test
     void getDbtable() {
-        configProperties.getDbtable();
+        configProperties.getDbtable1();
     }
 
     @Test

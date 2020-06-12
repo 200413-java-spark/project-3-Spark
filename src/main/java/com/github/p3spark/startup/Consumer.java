@@ -69,7 +69,7 @@ public class Consumer {
                         .outputMode("append")
                         .format("memory")
                         .queryName("initDF")
-                        .trigger(Trigger.ProcessingTime(5000))
+                        .trigger(Trigger.ProcessingTime(20000))
                         .start();
 
                 while (initDF.isActive()) {
@@ -84,10 +84,14 @@ public class Consumer {
                         json = new DataReader().parseHeaders(json);
 
                         Dataset<Row> result= new SimpleTransform(spark, json).productionForCountyYearly();
-                        result.show(1000);
+                        result.show(100);
 
                         new Database().writeToDatabase(result,1);
 
+                        Dataset<Row> result2= new SimpleTransform(spark, json).latlongYearly(false);
+                        result2.show(1000);
+
+                        new Database().writeToDatabase(result2,2);
                 }        
     }
 }

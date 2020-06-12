@@ -34,15 +34,15 @@ public class ConfigProperties {
     }
 
     public String getDbtable1() {
-        return properties.getProperty("dbtable");
+        return properties.getProperty("dbtable1");
     }
 
     public String getDbtable2() {
-        return properties.getProperty("dbtable");
+        return properties.getProperty("dbtable2");
     }
 
     public String getDbtable3() {
-        return properties.getProperty("dbtable");
+        return properties.getProperty("dbtable3");
     }
 
     public String getUser() {
