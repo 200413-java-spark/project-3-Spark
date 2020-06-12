@@ -17,27 +17,16 @@ public class CreateSparkSession {
     }
 
     private void createSession(){
-            // create session to load csv
+            //creating spark session
             if (this.sparkSession == null){
-                //s3 access and secret keys go here
-                //blank for use later
-                //String aKey = "";
-                //String sKey = "";
 
             this.sparkSession = SparkSession
                 .builder()
                 .master("local[*]")
                 .appName("spark")
-                //.config("fs.s3a.access.key", aKey)
-                //.config("fs.s3a.secret.key", sKey)
                 .getOrCreate();
-
-                //sparkSession.sparkContext().hadoopConfiguration().set("fs.s3a.endpoint", "s3-us-east-2.amazonaws.com");
-                //sparkSession.sparkContext().hadoopConfiguration().set("fs.s3a.access.key", aKey);
-                //sparkSession.sparkContext().hadoopConfiguration().set("fs.s3a.secret.key", sKey);
             }
     }
-    
     public SparkSession getSession(){
         return this.sparkSession;
     }

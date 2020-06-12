@@ -2,6 +2,7 @@ package com.github.p3spark.startup;
 
 import java.util.Arrays;
 
+import com.github.p3spark.operation1.SimpleTransform;
 import com.github.p3spark.utils.ConfigProperties;
 import org.apache.log4j.Level;
 import org.apache.spark.api.java.function.FlatMapFunction;
@@ -31,16 +32,9 @@ public class Consumer {
                 org.apache.log4j.Logger.getLogger("kafka").setLevel(Level.WARN);
                 // added to remove messy messages
 
-                /*
-                 * SparkSession spark = SparkSession .builder() .appName("consumer")
-                 * .master("local") .getOrCreate();
-                 */
-
                 // Create DataFrame representing the stream of input lines from connection to
                 // localhost:9999
-
-                
-
+                //creating schema to be used later to parse out in JSON format from kafka
                 StructType oilSchema = new StructType()
                         .add("API Well Number", "string")
                         .add("County", "string")
@@ -66,10 +60,8 @@ public class Consumer {
                         .format("kafka")
                         .option("kafka.bootstrap.servers", kafkaUrl)
                         .option("subscribe", kafkaTopic)
-                        .option("startingOffsets", "latest")
+                        .option("startingOffsets", "earliest")
                         .load();
-
-                // df.selectExpr("CAST(value AS STRING)");
 
                 StreamingQuery initDF = df
                         .selectExpr("CAST(value AS STRING)")
@@ -78,40 +70,29 @@ public class Consumer {
                         .outputMode("append")
                         .format("memory")
                         .queryName("initDF")
-                        .trigger(Trigger.ProcessingTime(2000))
+                        .trigger(Trigger.ProcessingTime(5000))
                         .start();
 
                 while (initDF.isActive()) {
                         try {
                                 Thread.sleep(10000);
                                 Dataset<Row> test1 = spark.sql("select * from initDF");
-                                //testing
-                                /*Dataset<String> words = test1.as(Encoders.STRING()).flatMap(
-                                (FlatMapFunction<String, String>) x -> Arrays.asList(x.split(" ")).iterator(),
-                                Encoders.STRING());
-        
-                                // Generate running word count
-                                Dataset<Row> wordCounts = words.groupBy("value").count();
-                                wordCounts.show();*/
-                                /*String[] headers = test1.columns();
-                                for(int i =0; i < headers.length; i++){
-                                        System.out.println(headers[i]);
-                                }
-                                System.out.println(test1.col("value"));*/
 
-                                test1.select(from_json(col("value"), oilSchema)
+                                Dataset<Row> json = test1.select(from_json(col("value"), oilSchema)
                                         .as("data"))
-                                        .select("data.*")
-                                        .show(10);
+                                        .select("data.*");
+
+                                json = new DataReader().parseHeaders(json);
+
+                                Dataset<Row> result= new SimpleTransform(spark, json).productionForCountyYearly();
+    	                        result.show(1000);
 
 
                         } catch (InterruptedException e) {
-                                // TODO Auto-generated catch block
+                                //prints stack trace if interrupted
                                 e.printStackTrace();
                         }
                 }
-
-        
 
         // Start running the query that prints the running counts to the console
         /*StreamingQuery query = df

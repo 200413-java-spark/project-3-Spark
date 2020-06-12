@@ -17,7 +17,11 @@ public class DataReader {
             .option("header", "true")
             .load(fileName);
         //select columns for counties and oil produced and year
-        
+        dataCSV = parseHeaders(dataCSV);
+        return dataCSV;
+    
+    }
+    public Dataset<Row> parseHeaders(Dataset<Row> dataCSV){
         String[] headers = dataCSV.columns();//gets headers into a string array
 
         for (int i = 0; i < headers.length; i++){

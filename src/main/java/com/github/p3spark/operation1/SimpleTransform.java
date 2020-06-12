@@ -27,7 +27,7 @@ public class SimpleTransform {
 				.withColumnRenamed("Reporting Year", "ReportingYear").withColumnRenamed("New Georeferenced Column", "NewGeoreferencedColumn");*/
 		
 		ds.createOrReplaceTempView("dataInfo");
-		ds.printSchema();
+		//ds.printSchema();
 	}
 	//Filter only for a specific company name.
 	public Dataset<Row> filterCompanyName(String company)
@@ -46,25 +46,28 @@ public class SimpleTransform {
 	//Total oil each county produce
 	public Dataset<Row> oilForCounty()
 	{
-		Dataset<Row> result=spark.sql("SELECT County,SUM(OilProducedbbl) AS Total_Oil_BBL from dataInfo where OilProduced_bbl is not null AND County is not null GROUP BY County ORDER BY County");
+		Dataset<Row> result=spark.sql("SELECT County,SUM(OilProduced_bbl) AS Total_Oil_BBL "+
+		"from dataInfo where OilProduced_bbl is not null AND County is not null GROUP BY County ORDER BY County");
 		return result;
 	}
 	//Total water each county produce
 	public Dataset<Row> waterForCounty()
 	{
-		Dataset<Row> result=spark.sql("SELECT County,SUM(WaterProducedbbl) AS Total_Water_BBL from dataInfo where WaterProduced_bbl is not null AND County is not null GROUP BY County ORDER BY County");
+		Dataset<Row> result=spark.sql("SELECT County,SUM(WaterProduced_bbl) AS Total_Water_BBL "+
+		"from dataInfo where WaterProduced_bbl is not null AND County is not null GROUP BY County ORDER BY County");
 		return result;
 	}
 	//Total gas each county produce
 	public Dataset<Row> gasForCounty()
 	{
-		Dataset<Row> result=spark.sql("SELECT County,SUM(GasProducedMcf) AS Total_GAS_Mcf from dataInfo where GasProduced_Mcf is not null AND County is not null GROUP BY County ORDER BY County");
+		Dataset<Row> result=spark.sql("SELECT County,SUM(GasProduced_Mcf) AS Total_GAS_Mcf from "+
+		"dataInfo where GasProduced_Mcf is not null AND County is not null GROUP BY County ORDER BY County");
 		return result;
 	}
 	//Total gas,water, oil each county produce
 	public Dataset<Row> productionForCounty()
 	{
-		Dataset<Row> result=spark.sql("SELECT County,SUM(GasProducedMcf) AS Total_GAS_Mcf,SUM(WaterProduced_bbl) AS Total_Water_BBL,SUM(OilProduced_bbl) AS Total_Oil_BBL"
+		Dataset<Row> result=spark.sql("SELECT County,SUM(GasProduced_Mcf) AS Total_GAS_Mcf,SUM(WaterProduced_bbl) AS Total_Water_BBL,SUM(OilProduced_bbl) AS Total_Oil_BBL"
 				+ " from dataInfo where (GasProduced_Mcf is not null OR WaterProduced_bbl is not null OR  OilProduced_bbl is not null) "
 				+ "AND County is not null GROUP BY County ORDER BY County");
 		return result;
