@@ -97,8 +97,8 @@ public class SimpleTransform {
 				+ " GROUP BY County, ReportingYear ORDER BY County,ReportingYear");
 		return result;
 	}
-	
-	public static Dataset<Row> latlongYearly(boolean condition)
+	//Return Dataset<Row> that contain rows of production for each Well for the first ReportingYear if parameter is 'false' else return yearly report.
+	public static Dataset<Row> LocationYearly(boolean condition)
 	{
 		Dataset<Row> first_tran=spark.sql("select DISTINCT(NewGeoreferencedColumn),County, ReportingYear,SUM(GasProducedMcf), "
 				+ "SUM(WaterProducedbbl),SUM(OilProducedbbl) from dataInfo "
@@ -135,6 +135,28 @@ public class SimpleTransform {
 			return fil;
 		}
 		
+		return result;
+	}
+	//Return total of production for all the years.
+	public static Dataset<Row> LocationTotal()
+	{
+		Dataset<Row> dataset=LocationYearly(true);
+		dataset.createOrReplaceTempView("dataInfo2");
+		Dataset<Row> result=spark.sql("select Long,Lat,County,Town,SUM(cast(Gas as double))Total_GAS,SUM(cast(Water as double)) Total_Water,SUM(cast(Oil as double)) Total_Oil from dataInfo2 GROUP BY Long,Lat,County,Town");
+		return result;
+		
+	}
+	
+	public static Dataset<Row> CountyProductionYearly()
+	{
+		Dataset<Row> result=LocationYearly(true);
+		result.createOrReplaceTempView("dataInfo2");
+		Dataset<Row> dataset=spark.sql("select County,Year,SUM(cast(Gas as double))Total_GAS,SUM(cast(Water as double)) Total_Water,SUM(cast(Oil as double)) Total_Oil from dataInfo2 GROUP BY County,Year ORDER BY Year ASC");
+		return dataset;
+	}
+	public static Dataset<Row> allCompany()
+	{
+		Dataset<Row> result= spark.sql("SELECT DISTINCT(CompanyName),ReportingYear AS Year,SUM(GasProducedMcf)Total_GAS,SUM(WaterProducedbbl) Total_Water,SUM(OilProducedbbl) Total_Oil from dataInfo GROUP BY CompanyName,Year ORDER BY CompanyName,Year ASC");
 		return result;
 	}
 
