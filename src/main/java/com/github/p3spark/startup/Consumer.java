@@ -15,6 +15,8 @@ import org.apache.spark.sql.streaming.StreamingQuery;
 import org.apache.spark.sql.streaming.Trigger;
 import org.apache.spark.sql.types.StructType;
 
+import java.util.concurrent.TimeUnit;
+
 public class Consumer {
         ConfigProperties configProperties = new ConfigProperties();
 
@@ -69,11 +71,10 @@ public class Consumer {
                         .outputMode("append")
                         .format("memory")
                         .queryName("initDF")
-                        .trigger(Trigger.ProcessingTime(5000))
+                        .trigger(Trigger.ProcessingTime(20000))
                         .start();
 
                 while (initDF.isActive()) {
-                        //                                Thread.sleep(10000);
 
                         Dataset<Row> test1 = spark.sql("select * from initDF");
 
@@ -84,10 +85,22 @@ public class Consumer {
                         json = new DataReader().parseHeaders(json);
 
                         Dataset<Row> result= new SimpleTransform(spark, json).productionForCountyYearly();
-                        result.show(1000);
 
                         new Database().writeToDatabase(result,1);
 
+                        Dataset<Row> result2= new SimpleTransform(spark, json).latlongYearly(false);
+
+                        new Database().writeToDatabase(result2,2);
+
+//                        Dataset<Row> result3= new SimpleTransform(spark, json).allCompany();
+//
+//                        new Database().writeToDatabase(result3,3);
+
+                        try {
+                                TimeUnit.MINUTES.sleep(1);
+                        } catch (InterruptedException e) {
+                                e.printStackTrace();
+                        }
                 }        
     }
 }
