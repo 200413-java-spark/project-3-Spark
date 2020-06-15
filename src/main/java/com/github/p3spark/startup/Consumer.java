@@ -85,13 +85,13 @@ public class Consumer {
 
             json = new DataReader().parseHeaders(json);
 
-            Dataset<Row> result = new SimpleTransform(spark, json).productionForCountyYearly();
-
-            new Database().writeToDatabase(result, 1);
+//            Dataset<Row> result = new SimpleTransform(spark, json).productionForCountyYearly();
+//
+//            new Database().writeToDatabase(result, 1);
             Dataset<Row> result2 = new SimpleTransform(spark, json).latlongYearly(false);
 
             new Database().writeToDatabase(result2, 2);
-
+//
 //                        Dataset<Row> result3= new SimpleTransform(spark, json).allCompany();
 //
 //                        new Database().writeToDatabase(result3,3);
