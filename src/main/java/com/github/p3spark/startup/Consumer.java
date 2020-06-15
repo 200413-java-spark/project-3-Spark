@@ -92,6 +92,11 @@ public class Consumer {
                         result2.show(1000);
 
                         new Database().writeToDatabase(result2,2);
+
+                        Dataset<Row> result3= new SimpleTransform(spark, json).allCompany();
+                        result3.show(1000);
+
+                        new Database().writeToDatabase(result3,2);
                 }        
     }
 }
