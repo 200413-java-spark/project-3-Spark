@@ -8,56 +8,43 @@ import java.util.Properties;
 
 public class ConfigProperties {
 
-    Properties properties = new Properties();
-    String FileName = "application.properties";
-    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(FileName);
-
     public ConfigProperties() {
-        loadProperties();
-    }
 
-
-    private void loadProperties() {
-        try {
-            properties.load(inputStream);
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
     }
 
     public String getDriver() {
-        return properties.getProperty("driver");
+        return "org.postgresql.Driver";
     }
 
     public String getUrl() {
-        return properties.getProperty("url");
+        return "jdbc:postgresql://3.17.207.114:5432/mydb";
     }
 
     public String getDbtable1() {
-        return properties.getProperty("dbtable1");
+        return "countyvsoilproductionbyyear";
     }
 
     public String getDbtable2() {
-        return properties.getProperty("dbtable2");
+        return "latlongyearly";
     }
 
     public String getDbtable3() {
-        return properties.getProperty("dbtable3");
+        return "allcompany";
     }
 
     public String getUser() {
-        return properties.getProperty("user");
+        return "mydb";
     }
 
     public String getPassword() {
-        return properties.getProperty("password");
+        return "mydb";
     }
 
     public String getKafkaurl() {
-        return properties.getProperty("kafkaurl");
+        return "3.16.158.213:9092";
     }
 
     public String getKafkatopic() {
-        return properties.getProperty("kafkatopic");
+        return "oil";
     }
 }

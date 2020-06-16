@@ -19,9 +19,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Consumer {
     ConfigProperties configProperties = new ConfigProperties();
-
     String kafkaUrl = configProperties.getKafkaurl();
     String kafkaTopic = configProperties.getKafkatopic();
+    boolean flag = true;
 
     public Consumer() {
     }
@@ -72,7 +72,7 @@ public class Consumer {
                 .outputMode("append")
                 .format("memory")
                 .queryName("initDF")
-                .trigger(Trigger.ProcessingTime(1000))
+                .trigger(Trigger.ProcessingTime(20000))
                 .start();
 
         while (initDF.isActive()) {
@@ -85,22 +85,38 @@ public class Consumer {
 
             json = new DataReader().parseHeaders(json);
 
-//            Dataset<Row> result = new SimpleTransform(spark, json).productionForCountyYearly();
-//
-//            new Database().writeToDatabase(result, 1);
-            Dataset<Row> result2 = new SimpleTransform(spark, json).latlongYearly(false);
+            sparkOperations(spark, json);
+        }
+    }
 
+    private void sparkOperations(SparkSession spark, Dataset<Row> json) {
+        if (flag) {
+            flag = false;
+            System.out.println("Starting init timeout");
+            try {
+                TimeUnit.MINUTES.sleep(3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("End of init timeout");
+        } else {
+            long minutes = 1;
+
+            System.out.println("Writing to database");
+            Dataset<Row> result = new SimpleTransform(spark, json).productionForCountyYearly();
+            new Database().writeToDatabase(result, 1);
+            Dataset<Row> result2 = new SimpleTransform(spark, json).LocationYearly(false);
             new Database().writeToDatabase(result2, 2);
-//
-//                        Dataset<Row> result3= new SimpleTransform(spark, json).allCompany();
-//
-//                        new Database().writeToDatabase(result3,3);
+            Dataset<Row> result3 = new SimpleTransform(spark, json).allCompany();
+            new Database().writeToDatabase(result3, 3);
+            System.out.println("Timeout window = " + minutes + " minute/s");
 
             try {
-                TimeUnit.MINUTES.sleep(1);
+                TimeUnit.MINUTES.sleep(minutes);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
+
 }
