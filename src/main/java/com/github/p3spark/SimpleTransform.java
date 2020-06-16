@@ -32,7 +32,7 @@ public class SimpleTransform {
 				.withColumnRenamed("Reporting Year", "ReportingYear").withColumnRenamed("New Georeferenced Column", "NewGeoreferencedColumn");
 		
 		this.ds_rename.createOrReplaceTempView("dataInfo");
-		ds_rename.printSchema();
+	
 	}
 	//Filter only for a specific company name.
 	public static Dataset<Row> filterCompanyName(String company)
@@ -101,37 +101,39 @@ public class SimpleTransform {
 	public static Dataset<Row> LocationYearly(boolean condition)
 	{
 		Dataset<Row> first_tran=spark.sql("select DISTINCT(NewGeoreferencedColumn),County, ReportingYear,SUM(GasProducedMcf), "
-				+ "SUM(WaterProducedbbl),SUM(OilProducedbbl) from dataInfo "
+				+ "SUM(WaterProducedbbl),SUM(OilProducedbbl),id from dataInfo "
 				+ "where (GasProducedMcf is not null OR WaterProducedbbl is not null OR  OilProducedbbl is not null OR NewGeoreferencedColumn is not null) "
-				+ "GROUP BY NewGeoreferencedColumn,ReportingYear,County");
+				+ "GROUP BY NewGeoreferencedColumn,ReportingYear,County,id");
 		Dataset<String> second_tran=first_tran.map((MapFunction<Row, String>) f -> 
 		{
 			String temp2=new String(f.toString());
 			String temp3[]=temp2.split("\\)");
 			String a[]=temp3[0].split("\\(");
 			String b[]=a[1].split(",");
+			
 			return b[0].trim()+","+b[1].replace(")]"," ").trim()+","+a[0].replace("[", "")+temp3[1].replace("]", "");
 		},  Encoders.STRING()
 		);
 		second_tran.createOrReplaceTempView("dataInfo2");
 		Dataset<Row> thrid_tran=spark.sql("select * from dataInfo2");
-		Dataset<Row> four_tran=thrid_tran.withColumn("Long", split(col("value"), ",").getItem(0))
-				.withColumn("Lat", split(col("value"), ",").getItem(1))
-				.withColumn("Town", split(col("value"), ",").getItem(2))
-				.withColumn("State", split(col("value"), ",").getItem(3))
-				.withColumn("County", split(col("value"), ",").getItem(4))
-				.withColumn("Year", split(col("value"), ",").getItem(5))
-				.withColumn("Gas",split(col("value"),",").getItem(6))
-				.withColumn("Water",split(col("value"),",").getItem(7))
-				.withColumn("Oil",split(col("value"),",").getItem(8));
+		Dataset<Row> four_tran=thrid_tran.withColumn("longtitude", split(col("value"), ",").getItem(0))
+				.withColumn("latitude", split(col("value"), ",").getItem(1))
+				.withColumn("town", split(col("value"), ",").getItem(2))
+				.withColumn("state", split(col("value"), ",").getItem(3))
+				.withColumn("county", split(col("value"), ",").getItem(4))
+				.withColumn("year", split(col("value"), ",").getItem(5))
+				.withColumn("gas",split(col("value"),",").getItem(6))
+				.withColumn("water",split(col("value"),",").getItem(7))
+				.withColumn("oil",split(col("value"),",").getItem(8))
+				.withColumn("id",split(col("value"),",").getItem(9));
 		four_tran.createOrReplaceTempView("dataInfo3");
-		Dataset<Row> result=spark.sql("select Long,Lat,County,Town,Year,Gas,Water,Oil from dataInfo3");
+		Dataset<Row> result=spark.sql("select longtitude,latitude,county,town,year,gas,water,oil,id from dataInfo3");
 		if(!condition)
 		{
 		result.createOrReplaceTempView("dataInfo4");
-		Dataset<Row> fil=spark.sql("select tbl.* from dataInfo4 tbl INNER JOIN ( Select Long,Lat,MIN(Year)"
-				+ " MinYear From dataInfo4 GROUP By Long,Lat )tbl1 ON tbl1.Long = tbl.Long AND tbl1.Lat=tbl.Lat Where tbl1.MinYear =tbl.Year"
-				+ " ORDER BY Year DESC");
+		Dataset<Row> fil=spark.sql("select tbl.* from dataInfo4 tbl INNER JOIN ( Select longtitude,latitude,MIN(year)"
+				+ " MinYear From dataInfo4 GROUP By longtitude,latitude)tbl1 ON tbl1.longtitude = tbl.longtitude AND tbl1.latitude=tbl.latitude Where tbl1.MinYear =tbl.Year"
+				+ " ORDER BY year DESC");
 			return fil;
 		}
 		
@@ -158,6 +160,25 @@ public class SimpleTransform {
 	{
 		Dataset<Row> result= spark.sql("SELECT DISTINCT(CompanyName),ReportingYear AS Year,SUM(GasProducedMcf)Total_GAS,SUM(WaterProducedbbl) Total_Water,SUM(OilProducedbbl) Total_Oil from dataInfo GROUP BY CompanyName,Year ORDER BY CompanyName,Year ASC");
 		return result;
+	}
+	public static Dataset<Row> townVsWell()
+	{
+		Dataset<Row> result=spark.sql("Select County,Town, APIWellNumber from dataInfo where County is not null and Town is not null "
+				+ "GROUP BY County,Town,APIWellNumber");
+		result.createOrReplaceTempView("dataInfo2");
+		Dataset<Row> dataset=spark.sql("Select Town,COUNT(Town)as total_well from dataInfo2 GROUP BY Town ORDER BY Town ASC");
+		return dataset;
+	}
+	public static Dataset<Row> countyVsWell()
+	{
+		Dataset<Row> result=spark.sql("Select County,Town, APIWellNumber from dataInfo where County is not null and Town is not null "
+				+ "GROUP BY County,Town,APIWellNumber");
+		result.createOrReplaceTempView("dataInfo2");
+		Dataset<Row> dataset=spark.sql("Select County,Town,COUNT(County,Town)as total_well from dataInfo2 GROUP BY County, Town ORDER BY County,Town ASC");
+		dataset.createOrReplaceTempView("dataInfo3");
+		Dataset<Row> data=spark.sql("Select County,SUM(total_well)as total_well from dataInfo3 GROUP BY County ORDER BY County ASC");
+		return data;
+		
 	}
 
 	
