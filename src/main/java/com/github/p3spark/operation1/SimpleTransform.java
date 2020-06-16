@@ -12,62 +12,16 @@ import java.util.Arrays;
 import static org.apache.spark.sql.functions.*;
 
 public class SimpleTransform {
+
     private Dataset<Row> ds;
     private SparkSession spark;
 
-    public SimpleTransform(SparkSession sp, Dataset<Row> data) {
+    public SimpleTransform(SparkSession spark, Dataset<Row> data) {
         this.ds = data;
-        this.spark = sp;
+        this.spark = spark;
         ds.createOrReplaceTempView("dataInfo");
     }
 
-    //Filter only for a specific company name.
-//	public Dataset<Row> filterCompanyName(String company)
-//	{
-//		Column comName=ds.col("CompanyName");
-//		Dataset<Row> result=ds.filter(comName.equalTo(company));
-//		return result;
-//	}
-//    //List all distinct company name
-//    public Dataset<Row> allCompanyName() {
-//        Dataset<Row> result = spark.sql("SELECT DISTINCT(CompanyName) from dataInfo ORDER BY CompanyName ASC");
-//        return result;
-//    }
-
-    //Total oil each county produce
-//	public Dataset<Row> oilForCounty()
-//	{
-//		Dataset<Row> result=spark.sql("SELECT County,SUM(OilProduced_bbl) AS Total_Oil_BBL "
-//				+"from dataInfo where OilProduced_bbl is not null AND "
-//				+"County is not null GROUP BY County ORDER BY County");
-//		return result;
-//	}
-//	//Total water each county produce
-//	public Dataset<Row> waterForCounty()
-//	{
-//		Dataset<Row> result=spark.sql("SELECT County,SUM(WaterProduced_bbl) AS Total_Water_BBL "
-//				+"from dataInfo where WaterProduced_bbl is not null AND "
-//				+"County is not null GROUP BY County ORDER BY County");
-//		return result;
-//	}
-//	//Total gas each county produce
-//	public Dataset<Row> gasForCounty()
-//	{
-//		Dataset<Row> result=spark.sql("SELECT County,SUM(GasProduced_Mcf) AS Total_GAS_Mcf from "
-//				+"dataInfo where GasProduced_Mcf is not null AND "
-//				+"County is not null GROUP BY County ORDER BY County");
-//		return result;
-//	}
-//    //Total gas,water, oil each county produce
-//    public Dataset<Row> productionForCounty() {
-//        Dataset<Row> result = spark.sql("SELECT County,SUM(GasProduced_Mcf) AS Total_GAS_Mcf,SUM(WaterProduced_bbl) "
-//                + "AS Total_Water_BBL,SUM(OilProduced_bbl) AS Total_Oil_BBL from dataInfo where "
-//                + "(GasProduced_Mcf is not null OR WaterProduced_bbl is not null OR  OilProduced_bbl is not null) "
-//                + "AND County is not null GROUP BY County ORDER BY County");
-//        return result;
-//    }
-
-    //Annual total gas,water, oil each county produce
     public Dataset<Row> productionForCountyYearly() {
         Dataset<Row> result = spark.sql("SELECT first(id) as id, County as county,  SUM(GasProduced_Mcf) AS totalgas,"
                 + "SUM(WaterProduced_bbl) AS totalwater,SUM(OilProduced_bbl) AS totaloil, ReportingYear as reportingyear FROM dataInfo "
@@ -77,46 +31,28 @@ public class SimpleTransform {
         return result;
     }
 
-//    //Current Active Well total for each County
-//    public Dataset<Row> activeWellForCounty() {
-//        Dataset<Row> result = spark.sql("Select County, COUNT(WellStatusCode) AS Total_Well from dataInfo where "
-//                + "County is not null AND WellStatusCode is not null AND WellStatusCode=='AC' "
-//                + "GROUP BY County ORDER BY County");
-//        return result;
-//    }
-//
-//    //Annual Active Well report for each County
-//    public Dataset<Row> activeWellForCountyYearly() {
-//        Dataset<Row> result = spark.sql("Select County, COUNT(WellStatusCode) AS Total_Well, ReportingYear from "
-//                + "dataInfo where County is not null AND WellStatusCode is not null AND WellStatusCode=='AC' "
-//                + "GROUP BY County, ReportingYear ORDER BY County,ReportingYear");
-//        return result;
-//    }
 
-    //Return Dataset<Row> that contain rows of production for each Well for the first ReportingYear if parameter is 'false' else return yearly report.
-    public Dataset<Row> latlongYearly(boolean condition) {
+    public Dataset<Row> LocationYearly(boolean condition) {
         Dataset<Row> first_tran = spark.sql("select DISTINCT(NewGeoreferencedColumn),County, ReportingYear,SUM(GasProduced_Mcf), "
-                + "SUM(WaterProduced_bbl),SUM(OilProduced_bbl), id from dataInfo "
+                + "SUM(WaterProduced_bbl),SUM(OilProduced_bbl),id from dataInfo "
                 + "where (GasProduced_Mcf is not null OR WaterProduced_bbl is not null OR  OilProduced_bbl is not null OR NewGeoreferencedColumn is not null) "
-                + "GROUP BY NewGeoreferencedColumn,ReportingYear,County, id");
+                + "GROUP BY NewGeoreferencedColumn,ReportingYear,County,id");
         Dataset<String> second_tran = first_tran.map((MapFunction<Row, String>) f ->
                 {
                     String temp2 = new String(f.toString());
                     String temp3[] = temp2.split("\\)");
-
                     String a[] = temp3[0].split("\\(");
-
-                    System.out.println(Arrays.toString(temp3));
-                    System.out.println(Arrays.toString(a));
-
-                    String b[] = a[1].split(",");
-                    return b[0].trim() + "," + b[1].replace(")]", " ").trim() + "," + a[0].replace("[", "") + temp3[1].replace("]", "");
+                    if(a.length >1) {
+                        String b[] = a[1].split(",");
+                        return b[0].trim() + "," + b[1].replace(")]", " ").trim() + "," + a[0].replace("[", "") + temp3[1].replace("]", "");
+                    }
+                    return null;
                 }, Encoders.STRING()
         );
         second_tran.createOrReplaceTempView("dataInfo2");
         Dataset<Row> thrid_tran = spark.sql("select * from dataInfo2");
         Dataset<Row> four_tran = thrid_tran
-                .withColumn("longitude", split(col("value"), ",").getItem(0))
+                .withColumn("longtitude", split(col("value"), ",").getItem(0))
                 .withColumn("latitude", split(col("value"), ",").getItem(1))
                 .withColumn("town", split(col("value"), ",").getItem(2))
                 .withColumn("state", split(col("value"), ",").getItem(3))
@@ -126,51 +62,24 @@ public class SimpleTransform {
                 .withColumn("water", split(col("value"), ",").getItem(7))
                 .withColumn("oil", split(col("value"), ",").getItem(8))
                 .withColumn("id", split(col("value"), ",").getItem(9));
-
         four_tran.createOrReplaceTempView("dataInfo3");
-        Dataset<Row> result = spark.sql("select longitude,latitude,county,town,year,gas,water,oil, id from dataInfo3");
+        Dataset<Row> result = spark.sql("select longtitude,latitude,county,town,year,gas,water,oil,id from dataInfo3");
         if (!condition) {
             result.createOrReplaceTempView("dataInfo4");
-            Dataset<Row> fil = spark.sql("select tbl.* from dataInfo4 tbl INNER JOIN ( Select longitude,latitude,MIN(year)"
-                    + " MinYear From dataInfo4 GROUP By longitude,latitude )tbl1 ON tbl1.longitude = tbl.longitude AND tbl1.latitude=tbl.latitude Where tbl1.MinYear =tbl.year"
+            Dataset<Row> fil = spark.sql("select tbl.* from dataInfo4 tbl INNER JOIN ( Select longtitude,latitude,MIN(year)"
+                    + " MinYear From dataInfo4 GROUP By longtitude,latitude)tbl1 ON tbl1.longtitude = tbl.longtitude AND tbl1.latitude=tbl.latitude Where tbl1.MinYear =tbl.Year"
                     + " ORDER BY year DESC");
-
             return fil;
         }
-// todo doesn't
+
         return result;
     }
 
-    //	//Return total of production for all the years.
-//	public Dataset<Row> LocationTotal()
-//	{
-//		Dataset<Row> dataset=latlongYearly(true);
-//		dataset.createOrReplaceTempView("dataInfo2");
-//		Dataset<Row> result=spark.sql("select Long,Lat,County,Town,SUM(cast(Gas as double))Total_GAS,SUM(cast(Water as double)) "
-//					+"Total_Water,SUM(cast(Oil as double)) Total_Oil from dataInfo2 GROUP BY Long,Lat,County,Town");
-//		return result;
-//
-//	}
-//
-//	public Dataset<Row> CountyProductionYearly()
-//	{
-//		Dataset<Row> result=latlongYearly(true);
-//		result.createOrReplaceTempView("dataInfo2");
-//		Dataset<Row> dataset=spark.sql("select County,Year,SUM(cast(Gas as double))Total_GAS,SUM(cast(Water as double)) "
-//					+"Total_Water,SUM(cast(Oil as double)) Total_Oil from dataInfo2 GROUP BY County,Year ORDER BY Year ASC");
-//		return dataset;
-//	}
+
     public Dataset<Row> allCompany() {
         Dataset<Row> result = spark.sql("SELECT  DISTINCT(CompanyName) as companyname, first(id) as id, ReportingYear AS year, SUM(GasProduced_Mcf) gastotal, "
                 + "SUM(WaterProduced_bbl) totalwater, SUM(OilProduced_bbl) totaloil "
                 + "from dataInfo GROUP BY companyname,year ORDER BY companyname,year ASC");
         return result;
-//    }
-
     }
 }
-//.productionForCountyYearly();
-
-//.latlongYearly(false);
-
-//.allCompany();
