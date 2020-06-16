@@ -1,10 +1,8 @@
 package com.github.p3spark.utils;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
 
 public class ConfigProperties {
 
@@ -25,12 +23,20 @@ public class ConfigProperties {
     }
 
     public String getDbtable2() {
-        return "latlongyearly";
+        return "locationyearly";
     }
 
     public String getDbtable3() {
         return "allcompany";
     }
+    public String getDbtable4() {
+        return "townvswell";
+    }
+
+    public String getDbtable5() {
+        return "countyvswell";
+    }
+
 
     public String getUser() {
         return "mydb";

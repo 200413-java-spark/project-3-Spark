@@ -13,8 +13,9 @@ public class DataReader {
         for (int i = 0; i < headers.length; i++){
             dataCSV = dataCSV
                 .withColumnRenamed(headers[i], headers[i]
-                    .replace(",", "_")
-                    .replace(" ", ""));
+                    .replace(",", "")
+                    .replace(" ", "")
+                    .toLowerCase());
         }
         return dataCSV;
     }

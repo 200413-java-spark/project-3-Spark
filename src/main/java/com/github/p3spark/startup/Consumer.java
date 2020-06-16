@@ -72,7 +72,7 @@ public class Consumer {
                 .outputMode("append")
                 .format("memory")
                 .queryName("initDF")
-                .trigger(Trigger.ProcessingTime(20000))
+                .trigger(Trigger.ProcessingTime(150000))
                 .start();
 
         while (initDF.isActive()) {
@@ -100,15 +100,23 @@ public class Consumer {
             }
             System.out.println("End of init timeout");
         } else {
-            long minutes = 1;
+            long minutes = 3;
+
+            SimpleTransform instance = new SimpleTransform(spark, json);
+            Database database = new Database();
 
             System.out.println("Writing to database");
-            Dataset<Row> result = new SimpleTransform(spark, json).productionForCountyYearly();
-            new Database().writeToDatabase(result, 1);
-            Dataset<Row> result2 = new SimpleTransform(spark, json).LocationYearly(false);
-            new Database().writeToDatabase(result2, 2);
-            Dataset<Row> result3 = new SimpleTransform(spark, json).allCompany();
-            new Database().writeToDatabase(result3, 3);
+            Dataset<Row> result = instance.productionForCountyYearly();
+            database.writeToDatabase(result, 1);
+            Dataset<Row> result2 = instance.LocationYearly(true);
+            database.writeToDatabase(result2, 2);
+            Dataset<Row> result3 = instance.allCompany();
+            database.writeToDatabase(result3, 3);
+            Dataset<Row> result4 = instance.townVsWell();
+            database.writeToDatabase(result4, 4);
+            Dataset<Row> result5 = instance.countyVsWell();
+            database.writeToDatabase(result5, 5);
+
             System.out.println("Timeout window = " + minutes + " minute/s");
 
             try {

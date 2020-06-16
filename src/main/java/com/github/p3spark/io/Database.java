@@ -30,6 +30,12 @@ public class Database {
                     case 3:
                     table = configProperties.getDbtable3();
                         break;
+                    case 4:
+                    table = configProperties.getDbtable4();
+                        break;
+                    case 5:
+                    table = configProperties.getDbtable5();
+                        break;
                     default:
                         break;
                 }
