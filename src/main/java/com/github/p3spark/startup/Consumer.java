@@ -94,7 +94,7 @@ public class Consumer {
             flag = false;
             System.out.println("Starting init timeout");
             try {
-                TimeUnit.MINUTES.sleep(3);
+                TimeUnit.MINUTES.sleep(2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

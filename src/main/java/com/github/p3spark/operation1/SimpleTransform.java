@@ -17,13 +17,13 @@ public class SimpleTransform {
         this.spark = spark;
         ds.createOrReplaceTempView("dataInfo");
 
-        Dataset<Row> result=spark.sql("SELECT county,town,apiwellnumber from dataInfo"
-                +" WHERE county is not null AND town is not null "
-				+ "GROUP BY county,town,apiwellnumber");
-		result.createOrReplaceTempView("dataInfo5");
+        Dataset<Row> result = spark.sql("SELECT county,town,apiwellnumber from dataInfo"
+                + " WHERE county is not null AND town is not null "
+                + "GROUP BY county,town,apiwellnumber");
+        result.createOrReplaceTempView("dataInfo5");
     }
 
-    
+
     public Dataset<Row> productionForCountyYearly() {
         Dataset<Row> result = spark.sql("SELECT first(id) as id, county, SUM(gasproducedmcf) AS totalgas,"
                 + "SUM(waterproducedbbl) AS totalwater,SUM(oilproducedbbl) AS totaloil, reportingyear FROM dataInfo "
@@ -45,17 +45,17 @@ public class SimpleTransform {
                     String temp3[] = temp2.split("\\)");
 
                     String a[] = temp3[0].split("\\(");
-                    if(a.length >1) {
+                    if (a.length > 1) {
                         String b[] = a[1].split(",");
                         return b[0].trim() + "," + b[1].replace(")]", " ").trim() + "," + a[0].replace("[", "") + temp3[1].replace("]", "");
                     }
-                    return null;                
+                    return null;
                 }, Encoders.STRING()
         );
         second_tran.createOrReplaceTempView("dataInfo2");
-        Dataset<Row> thrid_tran = spark.sql("select * from dataInfo2");
-        Dataset<Row> four_tran = thrid_tran
-                .withColumn("longtitude", split(col("value"), ",").getItem(0))
+        Dataset<Row> third_tran = spark.sql("select * from dataInfo2");
+        Dataset<Row> four_tran = third_tran
+                .withColumn("longitude", split(col("value"), ",").getItem(0))
                 .withColumn("latitude", split(col("value"), ",").getItem(1))
                 .withColumn("town", split(col("value"), ",").getItem(2))
                 .withColumn("state", split(col("value"), ",").getItem(3))
@@ -67,11 +67,11 @@ public class SimpleTransform {
                 .withColumn("id", split(col("value"), ",").getItem(9));
 
         four_tran.createOrReplaceTempView("dataInfo3");
-        Dataset<Row> result = spark.sql("select longtitude,latitude,county,town,year,gas,water,oil,id FROM dataInfo3");
+        Dataset<Row> result = spark.sql("select longitude,latitude,county,town,year,gas,water,oil,id FROM dataInfo3");
         if (!condition) {
             result.createOrReplaceTempView("dataInfo4");
-            Dataset<Row> fil = spark.sql("select tbl.* from dataInfo4 tbl INNER JOIN ( Select longtitude,latitude,MIN(year)"
-                    + " MinYear From dataInfo4 GROUP By longtitude,latitude )tbl1 ON tbl1.longtitude = tbl.longtitude"
+            Dataset<Row> fil = spark.sql("select tbl.* from dataInfo4 tbl INNER JOIN ( Select longitude,latitude,MIN(year)"
+                    + " MinYear From dataInfo4 GROUP By longitude,latitude )tbl1 ON tbl1.longitude = tbl.longitude"
                     + " AND tbl1.latitude=tbl.latitude Where tbl1.MinYear =tbl.year ORDER BY year DESC");
 
             return fil;
@@ -87,17 +87,16 @@ public class SimpleTransform {
         return result;
     }
 
-    public Dataset<Row> townVsWell()
-	{
-		Dataset<Row> dataset=spark.sql("SELECT town,COUNT(town)as total_well from dataInfo5 GROUP BY town ORDER BY town ASC");
-		return dataset;
-	}
-	public Dataset<Row> countyVsWell()
-	{
-        Dataset<Row> dataset=spark.sql("SELECT county,town,COUNT(county,town)as total_well from dataInfo5"
-                +" GROUP BY county,town ORDER BY county,town ASC");
-		dataset.createOrReplaceTempView("dataInfo3");
-		Dataset<Row> data=spark.sql("SELECT county,SUM(total_well)as total_well from dataInfo3 GROUP BY county ORDER BY county ASC");
-		return data;	
-	}
+    public Dataset<Row> townVsWell() {
+        Dataset<Row> dataset = spark.sql("SELECT town,COUNT(town)as total_well from dataInfo5 GROUP BY town ORDER BY town ASC");
+        return dataset;
+    }
+
+    public Dataset<Row> countyVsWell() {
+        Dataset<Row> dataset = spark.sql("SELECT county,town,COUNT(county,town)as total_well from dataInfo5"
+                + " GROUP BY county,town ORDER BY county,town ASC");
+        dataset.createOrReplaceTempView("dataInfo3");
+        Dataset<Row> data = spark.sql("SELECT county,SUM(total_well)as total_well from dataInfo3 GROUP BY county ORDER BY county ASC");
+        return data;
+    }
 }
