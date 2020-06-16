@@ -54,7 +54,8 @@ public class Consumer {
                 .add("Water Produced, bbl", "string")
                 .add("Oil Produced, bbl", "string")
                 .add("Reporting Year", "string")
-                .add("New Georeferenced Column", "string");
+                .add("New Georeferenced Column", "string")
+                .add("id", "string");
 
         Dataset<Row> df = spark
                 .readStream()
@@ -71,7 +72,7 @@ public class Consumer {
                 .outputMode("append")
                 .format("memory")
                 .queryName("initDF")
-                .trigger(Trigger.ProcessingTime(20000))
+                .trigger(Trigger.ProcessingTime(1000))
                 .start();
 
         while (initDF.isActive()) {
@@ -84,14 +85,13 @@ public class Consumer {
 
             json = new DataReader().parseHeaders(json);
 
-            Dataset<Row> result = new SimpleTransform(spark, json).productionForCountyYearly();
-
-            new Database().writeToDatabase(result, 1);
-
+//            Dataset<Row> result = new SimpleTransform(spark, json).productionForCountyYearly();
+//
+//            new Database().writeToDatabase(result, 1);
             Dataset<Row> result2 = new SimpleTransform(spark, json).latlongYearly(false);
 
             new Database().writeToDatabase(result2, 2);
-////
+//
 //                        Dataset<Row> result3= new SimpleTransform(spark, json).allCompany();
 //
 //                        new Database().writeToDatabase(result3,3);
