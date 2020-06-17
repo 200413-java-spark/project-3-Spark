@@ -1,8 +1,8 @@
 package com.github.p3spark.utils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+//import java.io.IOException;
+//import java.io.InputStream;
+//import java.util.Properties;
 
 public class ConfigProperties {
 
@@ -36,7 +36,6 @@ public class ConfigProperties {
     public String getDbtable5() {
         return "countyvswell";
     }
-
 
     public String getUser() {
         return "mydb";

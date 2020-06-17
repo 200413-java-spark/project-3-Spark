@@ -100,7 +100,7 @@ public class Consumer {
             }
             System.out.println("End of init timeout");
         } else {
-            long minutes = 3;
+            long minutes = 1;
 
             SimpleTransform instance = new SimpleTransform(spark, json);
             Database database = new Database();

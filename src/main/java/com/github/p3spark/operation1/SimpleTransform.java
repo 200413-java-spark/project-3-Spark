@@ -28,17 +28,18 @@ public class SimpleTransform {
         Dataset<Row> result = spark.sql("SELECT first(id) as id, county, SUM(gasproducedmcf) AS totalgas,"
                 + "SUM(waterproducedbbl) AS totalwater,SUM(oilproducedbbl) AS totaloil, reportingyear FROM dataInfo "
                 + "where (gasproducedmcf is not null OR waterproducedbbl is not null OR  oilproducedbbl is not null) and"
-                + " county is not null GROUP BY county,reportingyear ORDER BY county,reportingyear");
+                + " county is not null GROUP BY county,reportingyear");
+                //+" ORDER BY county,reportingyear");
 
         return result;
     }
 
     //Return Dataset<Row> that contain rows of production for each Well for the first ReportingYear if parameter is 'false' else return yearly report.
     public Dataset<Row> LocationYearly(boolean condition) {
-        Dataset<Row> first_tran = spark.sql("select DISTINCT(newgeoreferencedcolumn),county,reportingyear,SUM(gasproducedmcf), "
+        Dataset<Row> first_tran = spark.sql("select DISTINCT(newgeoreferencedcolumn),FIRST(county) AS county,reportingyear,SUM(gasproducedmcf), "
                 + "SUM(waterproducedbbl),SUM(oilproducedbbl), FIRST(id) as id from dataInfo "
                 + "where (gasproducedmcf is not null OR waterproducedbbl is not null OR oilproducedbbl is not null OR newgeoreferencedcolumn is not null) "
-                + "GROUP BY newgeoreferencedcolumn,reportingyear,county, id");
+                + "GROUP BY newgeoreferencedcolumn,reportingyear");
         Dataset<String> second_tran = first_tran.map((MapFunction<Row, String>) f ->
                 {
                     String temp2 = new String(f.toString());
@@ -83,20 +84,24 @@ public class SimpleTransform {
     public Dataset<Row> allCompany() {
         Dataset<Row> result = spark.sql("SELECT DISTINCT(companyname), first(id) as id, reportingyear AS year, SUM(gasproducedmcf) AS gastotal, "
                 + "SUM(waterproducedbbl) AS totalwater, SUM(oilproducedbbl) AS totaloil "
-                + "from dataInfo GROUP BY companyname,year ORDER BY companyname,year ASC");
+                + "from dataInfo GROUP BY companyname,year");
+                //+" ORDER BY companyname,year ASC");
         return result;
     }
 
     public Dataset<Row> townVsWell() {
-        Dataset<Row> dataset = spark.sql("SELECT town,COUNT(town)as total_well from dataInfo5 GROUP BY town ORDER BY town ASC");
+        Dataset<Row> dataset = spark.sql("SELECT town,COUNT(town)as total_well from dataInfo5 GROUP BY town");
+        //+" ORDER BY town ASC");
         return dataset;
     }
 
     public Dataset<Row> countyVsWell() {
         Dataset<Row> dataset = spark.sql("SELECT county,town,COUNT(county,town)as total_well from dataInfo5"
-                + " GROUP BY county,town ORDER BY county,town ASC");
+                + " GROUP BY county,town");
+                //+" ORDER BY county,town ASC");
         dataset.createOrReplaceTempView("dataInfo3");
-        Dataset<Row> data = spark.sql("SELECT county,SUM(total_well)as total_well from dataInfo3 GROUP BY county ORDER BY county ASC");
+        Dataset<Row> data = spark.sql("SELECT county,SUM(total_well)as total_well from dataInfo3 GROUP BY county");
+                //+" ORDER BY county ASC");
         return data;
     }
 }
